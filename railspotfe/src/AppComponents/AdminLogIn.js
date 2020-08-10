@@ -4,7 +4,7 @@ class AdminLogIn extends Component{
     render() {
         return(
             <div>
-                AL
+                <text>Esta es la parte de login de administradores</text>
             </div>
         );
     }
