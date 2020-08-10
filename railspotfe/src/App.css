@@ -2,11 +2,12 @@
   font-family: "Copperplate Gothic Light";
   font-style: italic;
   font-size: 70px;
-  color: #EFEFEF;
+  color: #263238;
 }
 
 .Background{
-  background-color:  #263238 ;
+  //background-color:  #263238 ;
+  background-color: #EFEFEF;
   text-align: center;
   padding: 30px;
 }

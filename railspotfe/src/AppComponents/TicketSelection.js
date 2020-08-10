@@ -1,10 +1,15 @@
 import React, {Component} from "react";
+import Divider from "@material-ui/core/Divider";
 
 class TicketSelection extends Component{
     render() {
         return(
             <div>
+                <div>&nbsp;</div>
                 TS
+                <div>&nbsp;</div>
+                <Divider variant={'middle'}/>
+                <Divider variant={'middle'}/>
             </div>
         );
     }
