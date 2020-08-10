@@ -4,7 +4,7 @@ class ConsultTickets extends Component{
     render() {
         return(
             <div>
-                CT
+                <text> esto es una prueba </text>
             </div>
         );
     }
