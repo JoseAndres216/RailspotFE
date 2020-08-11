@@ -3,17 +3,17 @@ import Divider from "@material-ui/core/Divider";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import TextField from "@material-ui/core/TextField";
 
 class TicketBill extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            id: '111111',
+            id: '',
             station1: '',
             station2: '',
             troughStations: [],
             date: Date,
+            tvdCertification: false,
             quantity: 0,
             ticketPrice: 0.0,
             discount: 0.0
@@ -29,11 +29,11 @@ class TicketBill extends Component{
                         <Typography align='center' variant='h6' color="textSecondary">
                             {'Railspot Costa Rica'}
                             <br />
-                            {'Factura N° ' + parseInt(0 + (Math.random() * (1000000)-0))}
+                            {'Factura N° ' + Math.floor(Math.random()*(1000000-1+1)+1)}
                             <br />
-                            {'Fecha:' + new Date().getDate() + '/' + new Date().getMonth() + '/' + new Date().getFullYear()}
+                            {'Fecha: ' + new Date().getDate() + '/' + new Date().getMonth() + '/' + new Date().getFullYear()}
                             <br />
-                            {'Hora:' + new Date().getHours() + ':' + new Date().getMinutes() + ':' + new Date().getSeconds()}
+                            {'Hora: ' + new Date().getHours() + ':' + new Date().getMinutes()}
                             <br />
                             {'Cliente #' + this.state.id}
                             <br /><br />
@@ -59,6 +59,12 @@ class TicketBill extends Component{
                             Railspot CR se reserva el derecho de admision y no se hace cargo de objetos extraviados por los clientes
                             <br />
                             Los tiquetes comprados en una fecha seran admitidos en fechas distintas en caso de contar con la certificacion correspondiente
+                            <br /><br />
+                        </Typography>
+                        <Typography align='center' variant='caption' color='textSecondary'>
+                            Que le cuesta ponernos un 100? ☹
+                            <br />
+                            No es mucho pero es un trabajo honesto
                         </Typography>
                     </CardContent>
                 </Card>
