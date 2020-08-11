@@ -1,9 +1,7 @@
 import React, {Component} from "react";
-import Divider from "@material-ui/core/Divider";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
-import {Grid} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
@@ -29,7 +27,7 @@ class ConsultTickets extends Component{
         return(
             <div>
                 <div>&nbsp;</div>
-                <text className={'Text'}>Consulta de: </text>
+                <text className={'Text'}>Consultas</text>
                 <div>&nbsp;</div>
                 <div>
                     <Select onChange={this.stationChanged}
