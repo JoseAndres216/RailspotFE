@@ -24,7 +24,7 @@ class StationsEdition extends Component{
                             <br />
                             {' '}
                             <br />
-                            {'Mucho Texto'}
+                            {'Mucho Texto ahre'}
                         </Typography>
                     </CardContent>
                 </Card>
@@ -63,7 +63,7 @@ class StationsEdition extends Component{
                     </Button>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <Button
-                        color={"primary"}
+                        color={'secondary'}
                         variant="contained">
                         Eliminar estación
                     </Button>
