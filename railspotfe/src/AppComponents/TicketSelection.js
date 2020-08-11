@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import TicketBill from "./TicketBill";
 import Divider from "@material-ui/core/Divider";
 
 class TicketSelection extends Component{
@@ -6,7 +7,7 @@ class TicketSelection extends Component{
         return(
             <div>
                 <div>&nbsp;</div>
-                TS
+
                 <div>&nbsp;</div>
                 <Divider variant={'middle'}/>
                 <Divider variant={'middle'}/>

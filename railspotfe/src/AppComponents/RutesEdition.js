@@ -16,13 +16,13 @@ class RutesEdition extends Component{
     }
 
     station1Changed = (event) => {
-        this.station1 = event.target.value
-        console.log('El valor de station1 es: ' + this.station1)
+        this.state.station1 = event.target.value
+        console.log('El valor de station1 es: ' + this.state.station1)
     };
 
     station2Changed = (event) => {
-        this.station2 = event.target.value
-        console.log('El valor de station2 es: ' + this.station2)
+        this.state.station2 = event.target.value
+        console.log('El valor de station2 es: ' + this.state.station2)
     };
 
     render() {
@@ -35,7 +35,7 @@ class RutesEdition extends Component{
                 <div>
                     <Select
                         onChange={this.station1Changed}
-                        value={this.station1}>
+                        value={this.state.station1}>
 
                         <MenuItem value={''}><em>Seleccione una estacion</em></MenuItem>
                         <MenuItem value={'Estacion ejemplo 1'}>Estacion ejemplo 1</MenuItem>
@@ -47,7 +47,7 @@ class RutesEdition extends Component{
 
                     <Select
                         onChange={this.station2Changed}
-                        value={this.station2}>
+                        value={this.state.station2}>
 
                         <MenuItem value={''}><em>Seleccione una estacion</em></MenuItem>
                         <MenuItem value={'Estacion ejemplo 1'}>Estacion ejemplo 1</MenuItem>
