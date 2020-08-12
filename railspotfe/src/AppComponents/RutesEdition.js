@@ -5,13 +5,15 @@ import Divider from "@material-ui/core/Divider";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import Button from "@material-ui/core/Button";
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 class RutesEdition extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            station1: String,
-            station2: String
+            station1: '[estacion 1]',
+            station2: '[estacion 2]'
         };
     }
 
@@ -32,10 +34,9 @@ class RutesEdition extends Component{
     render() {
         return(
             <div>
-                <div>&nbsp;</div>
+                <br/>
                 <text className={'Text'}>Edicion de rutas</text>
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
+                <br/><br/>
                 <div>
                     <Select
                         onChange={this.station1Changed}
@@ -59,12 +60,12 @@ class RutesEdition extends Component{
                         <MenuItem value={'Estacion ejemplo 3'}>Estacion ejemplo 3</MenuItem>
                     </Select>
                 </div>
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
+                <br/><br/>
                 <div>
                     <Button
                         color={'primary'}
                         variant="contained"
+                        startIcon={<AddCircleOutlineIcon/>}
                         onClick={()=>{
                             console.log('Accion del boton: Agregar ruta')
                         }}>
@@ -74,13 +75,14 @@ class RutesEdition extends Component{
                     <Button
                         color={'secondary'}
                         variant="contained"
+                        startIcon={<HighlightOffIcon/>}
                         onClick={()=>{
                             console.log('Accion del boton: Eliminar ruta')
                         }}>
                         Eliminar ruta
                     </Button>
                 </div>
-                <div>&nbsp;</div>
+                <br/>
                 <Divider variant={'middle'}/>
                 <Divider variant={'middle'}/>
             </div>

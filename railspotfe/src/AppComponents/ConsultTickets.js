@@ -7,14 +7,15 @@ import Button from "@material-ui/core/Button";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
+import Divider from "@material-ui/core/Divider";
 
 
 class ConsultTickets extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            option : String,
-            station : String
+            option : '[opcion]',
+            station : '[estacion]'
         }
     }
 
@@ -29,9 +30,9 @@ class ConsultTickets extends Component{
     render() {
         return(
             <div>
-                <div>&nbsp;</div>
+                <br/>
                 <text className={'Text'}>Consultas</text>
-                <div>&nbsp;</div>
+                <br/><br/>
                 <div>
                     <Select onChange={this.stationChanged}
                             value={this.option}>
@@ -41,10 +42,7 @@ class ConsultTickets extends Component{
                         <MenuItem value={'Estacion ejemplo 3'}>Estacion</MenuItem>
                     </Select>
                 </div>
-
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
-
+                <br/><br/>
                 <div>
                     <form>
                         <TextField
@@ -72,7 +70,7 @@ class ConsultTickets extends Component{
                         </Select>
                     </form>
                     <div>
-                        <div>&nbsp;</div>
+                        <br/>
                         <Button
                             color={"primary"}
                             variant="contained"
@@ -81,7 +79,7 @@ class ConsultTickets extends Component{
                             }}>
                             Realizar consulta
                         </Button>
-                        <div>&nbsp;</div>
+                        <br /><br />
                         <Card>
                             <CardContent>
                                 <Typography align='center' variant='h6' color="textSecondary">
@@ -97,6 +95,9 @@ class ConsultTickets extends Component{
                         </Card>
                     </div>
                 </div>
+                <br/>
+                <Divider variant={'middle'}/>
+                <Divider variant={'middle'}/>
             </div>
         );
     }

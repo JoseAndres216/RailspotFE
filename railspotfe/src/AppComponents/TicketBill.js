@@ -9,9 +9,9 @@ class TicketBill extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            id: '',
-            station1: '',
-            station2: '',
+            id: '[id de usuario]',
+            station1: '[estacion 1]',
+            station2: '[estacion 2]',
             troughStations: [],
             date: Date,
             tvdCertification: false,
@@ -24,7 +24,9 @@ class TicketBill extends Component{
     render() {
         return(
             <div>
-                <div>&nbsp;</div>
+                <br/>
+                <text className={'Text'}>Factura de compra</text>
+                <br/><br/>
                 <Card>
                     <CardContent>
                         <Typography align='center' variant='h6' color="textSecondary">
@@ -69,7 +71,7 @@ class TicketBill extends Component{
                         </Typography>
                     </CardContent>
                 </Card>
-                <div>&nbsp;</div>
+                <br/>
                 <Divider variant={'middle'}/>
                 <Divider variant={'middle'}/>
             </div>

@@ -1,18 +1,18 @@
 import React, {Component} from "react";
 import axios from 'axios';
-
 import './AdminLogIn.css'
 
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
+import PersonIcon from '@material-ui/icons/Person';
 
 class AdminLogIn extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            user: String,
-            password: String
+            user: '[Usuario]',
+            password: '[Contraseña]'
         };
     }
 
@@ -33,13 +33,9 @@ class AdminLogIn extends Component{
     render() {
         return(
             <div>
-                <div>&nbsp;</div>
-
+                <br/>
                 <text className={'Text'}>Iniciar sesion como administrador</text>
-
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
-
+                <br/><br/>
                 <div>
                     <TextField
                         color={'primary'}
@@ -51,9 +47,7 @@ class AdminLogIn extends Component{
                         onChange={this.userChanged}
                     />
                 </div>
-
-                <div>&nbsp;</div>
-
+                <br/>
                 <div>
                     <TextField
                         color={'primary'}
@@ -65,15 +59,13 @@ class AdminLogIn extends Component{
                         onChange={this.passwordChanged}
                     />
                 </div>
-
-                <div>&nbsp;</div>
-                <div>&nbsp;</div>
-
+                <br/><br/>
                 <div>
                     <Button
                         id='btnSignIn'
                         color={'primary'}
                         variant="contained"
+                        endIcon={<PersonIcon/>}
                         onClick={()=> {
                             try {
                                 var httpResult = axios({
@@ -96,8 +88,7 @@ class AdminLogIn extends Component{
                         Iniciar sesion
                     </Button>
                 </div>
-
-                <div>&nbsp;</div>
+                <br/>
                 <Divider variant={'middle'}/>
                 <Divider variant={'middle'}/>
             </div>

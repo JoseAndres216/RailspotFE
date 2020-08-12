@@ -6,14 +6,16 @@ import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
+import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 class StationsEdition extends Component{
     render() {
         return(
             <div>
-                <div>&nbsp;</div>
+                <br/>
                 <text className={'Text'}>Edición de estaciones</text>
-                <div>&nbsp;</div>
+                <br/><br/>
                 <Card>
                     <CardContent>
                         <Typography align='center' variant='h6' color="textSecondary">
@@ -29,7 +31,7 @@ class StationsEdition extends Component{
                         </Typography>
                     </CardContent>
                 </Card>
-                <div>&nbsp;</div>
+                <br/>
                 <div>
                     <TextField
                         color={'primary'}
@@ -55,11 +57,12 @@ class StationsEdition extends Component{
                         variant="outlined"
                         onChange={this.userChanged}/>
                 </div>
-                <div>&nbsp;</div>
+                <br/>
                 <div>
                     <Button
                         color={"primary"}
                         variant="contained"
+                        startIcon={<AddCircleOutlineIcon/>}
                         onClick={()=>{
                             console.log('Accion del boton: Agregar estacion')
                         }}>
@@ -69,13 +72,14 @@ class StationsEdition extends Component{
                     <Button
                         color={'secondary'}
                         variant="contained"
+                        startIcon={<HighlightOffIcon/>}
                         onClick={()=>{
                             console.log('Accion del boton: Eliminar estacion')
                         }}>
                         Eliminar estación
                     </Button>
                 </div>
-                <div>&nbsp;</div>
+                <br/>
                 <Divider variant={'middle'}/>
                 <Divider variant={'middle'}/>
             </div>

@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import axios from 'axios'
 import './TicketSelection.css'
 
 import Divider from "@material-ui/core/Divider";
@@ -13,8 +12,8 @@ class TicketSelection extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            station1: String,
-            station2: String,
+            station1: '[estacion 1]',
+            station2: '[estacion 2]',
             date: Date,
             quantity: 0,
             tvdCertification: false
@@ -75,7 +74,7 @@ class TicketSelection extends Component{
                         <MenuItem value={'Estacion ejemplo 3'}>Estacion ejemplo 3</MenuItem>
                     </Select>
 
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                     <Select
                         onChange={this.station2Changed}
@@ -99,7 +98,7 @@ class TicketSelection extends Component{
                         variant='outlined'
                         onChange={this.dateChanged}/>
 
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                     <TextField
                         color={'primary'}
