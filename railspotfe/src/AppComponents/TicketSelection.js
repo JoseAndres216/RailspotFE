@@ -35,6 +35,11 @@ class TicketSelection extends Component{
         console.log('El valor de date es: ' + this.state.date)
     };
 
+    quantityChanged = (event) => {
+        this.state.date = event.target.value
+        console.log('Cantidad de tiquetes: ' + this.state.date)
+    }
+
     tvdCertifChanged = () => {
         this.state.tvdCertification = !this.state.tvdCertification
         console.log('El valor de tvd es: ' + this.state.tvdCertification)
@@ -92,6 +97,7 @@ class TicketSelection extends Component{
                         id="txbQuantity"
                         label="Cantidad de tiquetes"
                         variant="outlined"
+                        onChange={this.quantityChanged}
                     />
                 </div>
                 <br/>
