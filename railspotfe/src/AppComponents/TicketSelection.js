@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import axios from 'axios'
 import './TicketSelection.css'
 
 import Divider from "@material-ui/core/Divider";
@@ -44,6 +45,8 @@ class TicketSelection extends Component{
         this.state.tvdCertification = !this.state.tvdCertification
         console.log('El valor de tvd es: ' + this.state.tvdCertification)
     };
+
+
 
     render() {
         return(

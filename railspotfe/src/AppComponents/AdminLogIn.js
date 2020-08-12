@@ -1,4 +1,6 @@
 import React, {Component} from "react";
+import axios from 'axios';
+
 import './AdminLogIn.css'
 
 import TextField from "@material-ui/core/TextField";
@@ -15,11 +17,13 @@ class AdminLogIn extends Component{
     }
 
     userChanged = (event) => {
-        this.user = event.target.value
+        this.state.user = event.target.value
+        console.log(this.state.user)
     };
 
     passwordChanged = (event) => {
-        this.password = event.target.value
+        this.state.password = event.target.value
+        console.log(this.state.password)
     };
 
     render() {
@@ -66,7 +70,8 @@ class AdminLogIn extends Component{
                         id='btnSignIn'
                         color={'primary'}
                         variant="contained"
-                        onClick={this.btnLoginOnClick()}>
+                        /*onClick={this.btnLoginOnClick()}*/
+                        /*onClick={this.btnLoginOnClickv2()}*/>
                         Iniciar sesion
                     </Button>
                 </div>
@@ -78,8 +83,31 @@ class AdminLogIn extends Component{
         );
     }
 
+
     btnLoginOnClick(){
-        console.log("Usuario: " + this.user + ", contrasena: " + this.password)
+        axios.get(`http://localhost/admin/login?user=` + this.state.user + '&password=' + this.state.password)
+            .then(res => {
+
+            })
+    }
+
+
+    btnLoginOnClickv2(){
+        try {
+            var httpResult = axios({
+                method: "GET",
+                url: `http://localhost/admin/login?user=` + this.state.user + '&password=' + this.state.password
+            });
+            httpResult
+                .then((response) => {
+                    console.log(response);
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+        } catch (error) {
+            console.log(error);
+        }
     }
 }
 
