@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
@@ -9,8 +10,8 @@ import Card from "@material-ui/core/Card";
 
 
 class ConsultTickets extends Component{
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             option : String,
             station : String
@@ -18,7 +19,9 @@ class ConsultTickets extends Component{
     }
 
     stationChanged = (event) => {
-        this.station = event.target.value
+        this.setState({
+            station: event.target.value
+        })
         console.log('El valor de station es: ' + this.station)
     };
 
@@ -72,7 +75,10 @@ class ConsultTickets extends Component{
                         <div>&nbsp;</div>
                         <Button
                             color={"primary"}
-                            variant="contained">
+                            variant="contained"
+                            onClick={()=>{
+                                console.log('Accion del boton: Realizar consulta')
+                            }}>
                             Realizar consulta
                         </Button>
                         <div>&nbsp;</div>

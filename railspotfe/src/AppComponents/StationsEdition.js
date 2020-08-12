@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+
 import Divider from "@material-ui/core/Divider";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
@@ -58,13 +59,19 @@ class StationsEdition extends Component{
                 <div>
                     <Button
                         color={"primary"}
-                        variant="contained">
+                        variant="contained"
+                        onClick={()=>{
+                            console.log('Accion del boton: Agregar estacion')
+                        }}>
                         Agregar estación
                     </Button>
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <Button
                         color={'secondary'}
-                        variant="contained">
+                        variant="contained"
+                        onClick={()=>{
+                            console.log('Accion del boton: Eliminar estacion')
+                        }}>
                         Eliminar estación
                     </Button>
                 </div>

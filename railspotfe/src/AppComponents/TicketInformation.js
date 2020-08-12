@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+
 import Divider from "@material-ui/core/Divider";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
@@ -35,7 +36,10 @@ class TicketInformation extends Component{
                     <div>&nbsp;</div>
                     <Button
                         color={"primary"}
-                        variant="contained">
+                        variant="contained"
+                        onClick={()=>{
+                            console.log('Accion del boton: Realizar compra')
+                        }}>
                         Realizar Compra
                     </Button>
                     <div>&nbsp;</div>

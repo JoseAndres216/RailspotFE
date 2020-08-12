@@ -16,12 +16,16 @@ class RutesEdition extends Component{
     }
 
     station1Changed = (event) => {
-        this.state.station1 = event.target.value
+        this.setState({
+            station1: event.target.value
+        })
         console.log('El valor de station1 es: ' + this.state.station1)
     };
 
     station2Changed = (event) => {
-        this.state.station2 = event.target.value
+        this.setState({
+            station2: event.target.value
+        })
         console.log('El valor de station2 es: ' + this.state.station2)
     };
 
@@ -43,7 +47,7 @@ class RutesEdition extends Component{
                         <MenuItem value={'Estacion ejemplo 3'}>Estacion ejemplo 3</MenuItem>
                     </Select>
 
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
                     <Select
                         onChange={this.station2Changed}
@@ -60,13 +64,19 @@ class RutesEdition extends Component{
                 <div>
                     <Button
                         color={'primary'}
-                        variant="contained">
+                        variant="contained"
+                        onClick={()=>{
+                            console.log('Accion del boton: Agregar ruta')
+                        }}>
                         Agregar ruta
                     </Button>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <Button
                         color={'secondary'}
-                        variant="contained">
+                        variant="contained"
+                        onClick={()=>{
+                            console.log('Accion del boton: Eliminar ruta')
+                        }}>
                         Eliminar ruta
                     </Button>
                 </div>

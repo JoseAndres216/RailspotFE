@@ -22,31 +22,39 @@ class TicketSelection extends Component{
     }
 
     station1Changed = (event) => {
-        this.state.station1 = event.target.value
+        this.setState({
+            station1: event.target.value
+        })
         console.log('El valor de station1 es: ' + this.state.station1)
     };
 
     station2Changed = (event) => {
-        this.state.station2 = event.target.value
+        this.setState({
+            station2: event.target.value
+        })
         console.log('El valor de station2 es: ' + this.state.station2)
     };
 
     dateChanged = (event) => {
-        this.state.date = event.target.value
+        this.setState({
+            date: event.target.value
+        })
         console.log('El valor de date es: ' + this.state.date)
     };
 
     quantityChanged = (event) => {
-        this.state.date = event.target.value
+        this.setState({
+            quantity: event.target.value
+        })
         console.log('Cantidad de tiquetes: ' + this.state.date)
     }
 
     tvdCertifChanged = () => {
-        this.state.tvdCertification = !this.state.tvdCertification
+        this.setState({
+            tvdCertification: !this.state.tvdCertification
+        })
         console.log('El valor de tvd es: ' + this.state.tvdCertification)
     };
-
-
 
     render() {
         return(
@@ -113,7 +121,10 @@ class TicketSelection extends Component{
                     <Button
                         id='btnSelectticket'
                         color={'primary'}
-                        variant="contained">
+                        variant="contained"
+                        onClick={()=>{
+                            console.log('Accion del boton: Seleccionar tiquete')
+                        }}>
                         Seleccionar tiquete
                     </Button>
                 </div>
