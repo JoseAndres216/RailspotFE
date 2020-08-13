@@ -6,13 +6,17 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import PersonIcon from '@material-ui/icons/Person';
+import RutesEdition from "./RutesEdition";
+import StationsEdition from "./StationsEdition";
+import ConsultTickets from "./ConsultTickets";
 
 class AdminLogIn extends Component{
     constructor(props) {
         super(props);
         this.state = {
             user: '[Usuario]',
-            password: '[Contraseña]'
+            password: '[Contraseña]',
+            showing: false
         };
     }
 
@@ -67,7 +71,10 @@ class AdminLogIn extends Component{
                         variant="contained"
                         endIcon={<PersonIcon/>}
                         onClick={()=> {
-                            try {
+                            if(this.state.showing === false){ //esta vara
+                                this.setState({showing: !this.state.showing})
+                            }
+                            /*try {
                                 var httpResult = axios({
                                     method: "GET",
                                     url: `http://localhost/admin/login?user=` + this.state.user + '&password='
@@ -75,22 +82,24 @@ class AdminLogIn extends Component{
                                 });
                                 httpResult
                                     .then((response) => {
-                                        console.log(response);
+                                        console.log(response); //esa vara va aqui
                                     })
                                     .catch((error) => {
                                         console.log(error);
                                     });
                             } catch (error) {
                                 console.log(error);
-                            }
-                        }
-                        }>
+                            }*/
+                        }}>
                         Iniciar sesion
                     </Button>
                 </div>
                 <br/>
                 <Divider variant={'middle'}/>
                 <Divider variant={'middle'}/>
+                <RutesEdition showing = {this.state.showing}/>
+                <StationsEdition showing = {this.state.showing}/>
+                <ConsultTickets showing = {this.state.showing}/>
             </div>
         );
     }

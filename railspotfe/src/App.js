@@ -1,9 +1,6 @@
 import React, {Component} from 'react';
 import './App.css';
 import AdminLogIn from './AppComponents/AdminLogIn';
-import ConsultTickets from "./AppComponents/ConsultTickets";
-import RutesEdition from "./AppComponents/RutesEdition";
-import StationsEdition from "./AppComponents/StationsEdition";
 import TicketSelection from "./AppComponents/TicketSelection";
 
 class App extends Component{
@@ -14,9 +11,6 @@ class App extends Component{
           <br/><br/>
         <TicketSelection/>
         <AdminLogIn/>
-        <RutesEdition/>
-        <StationsEdition/>
-        <ConsultTickets/>
       </div>
     );
   }

@@ -11,79 +11,86 @@ import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 class StationsEdition extends Component{
     render() {
-        return(
-            <div>
-                <br/>
-                <text className={'Text'}>Edición de estaciones</text>
-                <br/><br/>
-                <Card>
-                    <CardContent>
-                        <Typography align='center' variant='h6' color="textSecondary">
-                            {' '}
-                            <br />
-                            {' '}
-                            <br />
-                            {'Aqui va el grafo'}
-                            <br />
-                            {' '}
-                            <br />
-                            {'Mucho Texto ahre'}
-                        </Typography>
-                    </CardContent>
-                </Card>
-                <br/>
+        if(this.props.showing){
+            return(
                 <div>
-                    <TextField
-                        color={'primary'}
-                        required={true}
-                        placeholder={"Nombre de estación"}
-                        id="txtStation"
-                        variant="outlined"
-                        onChange={this.userChanged}/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <TextField
-                        color={'primary'}
-                        required={true}
-                        placeholder={"Posición en x"}
-                        id="txtStation"
-                        variant="outlined"
-                        onChange={this.userChanged}/>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <TextField
-                        color={'primary'}
-                        required={true}
-                        placeholder={"Posición en y"}
-                        id="txtStation"
-                        variant="outlined"
-                        onChange={this.userChanged}/>
+                    <br/>
+                    <text className={'Text'}>Edición de estaciones</text>
+                    <br/><br/>
+                    <Card>
+                        <CardContent>
+                            <Typography align='center' variant='h6' color="textSecondary">
+                                {' '}
+                                <br />
+                                {' '}
+                                <br />
+                                {'Aqui va el grafo'}
+                                <br />
+                                {' '}
+                                <br />
+                                {'Mucho Texto ahre'}
+                            </Typography>
+                        </CardContent>
+                    </Card>
+                    <br/>
+                    <div>
+                        <TextField
+                            color={'primary'}
+                            required={true}
+                            placeholder={"Nombre de estación"}
+                            id="txtStation"
+                            variant="outlined"
+                            onChange={this.userChanged}/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <TextField
+                            color={'primary'}
+                            required={true}
+                            placeholder={"Posición en x"}
+                            id="txtStation"
+                            variant="outlined"
+                            onChange={this.userChanged}/>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <TextField
+                            color={'primary'}
+                            required={true}
+                            placeholder={"Posición en y"}
+                            id="txtStation"
+                            variant="outlined"
+                            onChange={this.userChanged}/>
+                    </div>
+                    <br/>
+                    <div>
+                        <Button
+                            color={"primary"}
+                            variant="contained"
+                            startIcon={<AddCircleOutlineIcon/>}
+                            onClick={()=>{
+                                console.log('Accion del boton: Agregar estacion')
+                            }}>
+                            Agregar estación
+                        </Button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <Button
+                            color={'secondary'}
+                            variant="contained"
+                            startIcon={<HighlightOffIcon/>}
+                            onClick={()=>{
+                                console.log('Accion del boton: Eliminar estacion')
+                            }}>
+                            Eliminar estación
+                        </Button>
+                    </div>
+                    <br/>
+                    <Divider variant={'middle'}/>
+                    <Divider variant={'middle'}/>
                 </div>
-                <br/>
+            );
+        }else{
+            return (
                 <div>
-                    <Button
-                        color={"primary"}
-                        variant="contained"
-                        startIcon={<AddCircleOutlineIcon/>}
-                        onClick={()=>{
-                            console.log('Accion del boton: Agregar estacion')
-                        }}>
-                        Agregar estación
-                    </Button>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <Button
-                        color={'secondary'}
-                        variant="contained"
-                        startIcon={<HighlightOffIcon/>}
-                        onClick={()=>{
-                            console.log('Accion del boton: Eliminar estacion')
-                        }}>
-                        Eliminar estación
-                    </Button>
                 </div>
-                <br/>
-                <Divider variant={'middle'}/>
-                <Divider variant={'middle'}/>
-            </div>
-        );
+            )
+        }
     }
 }
 

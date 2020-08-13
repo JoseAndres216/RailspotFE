@@ -33,61 +33,68 @@ class RutesEdition extends Component{
     };
 
     render() {
-        return(
-            <div>
-                <br/>
-                <text className={'Text'}>Edicion de rutas</text>
-                <br/><br/>
+        if(this.props.showing){
+            return(
                 <div>
-                    <Select
-                        onChange={this.station1Changed}
-                        value={this.state.station1}>
+                    <br/>
+                    <text className={'Text'}>Edicion de rutas</text>
+                    <br/><br/>
+                    <div>
+                        <Select
+                            onChange={this.station1Changed}
+                            value={this.state.station1}>
 
-                        <MenuItem value={''}><em>Seleccione una estacion</em></MenuItem>
-                        <MenuItem value={'Estacion ejemplo 1'}>Estacion ejemplo 1</MenuItem>
-                        <MenuItem value={'Estacion ejemplo 2'}>Estacion ejemplo 2</MenuItem>
-                        <MenuItem value={'Estacion ejemplo 3'}>Estacion ejemplo 3</MenuItem>
-                    </Select>
+                            <MenuItem value={''}><em>Seleccione una estacion</em></MenuItem>
+                            <MenuItem value={'Estacion ejemplo 1'}>Estacion ejemplo 1</MenuItem>
+                            <MenuItem value={'Estacion ejemplo 2'}>Estacion ejemplo 2</MenuItem>
+                            <MenuItem value={'Estacion ejemplo 3'}>Estacion ejemplo 3</MenuItem>
+                        </Select>
 
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-                    <Select
-                        onChange={this.station2Changed}
-                        value={this.state.station2}>
+                        <Select
+                            onChange={this.station2Changed}
+                            value={this.state.station2}>
 
-                        <MenuItem value={''}><em>Seleccione una estacion</em></MenuItem>
-                        <MenuItem value={'Estacion ejemplo 1'}>Estacion ejemplo 1</MenuItem>
-                        <MenuItem value={'Estacion ejemplo 2'}>Estacion ejemplo 2</MenuItem>
-                        <MenuItem value={'Estacion ejemplo 3'}>Estacion ejemplo 3</MenuItem>
-                    </Select>
+                            <MenuItem value={''}><em>Seleccione una estacion</em></MenuItem>
+                            <MenuItem value={'Estacion ejemplo 1'}>Estacion ejemplo 1</MenuItem>
+                            <MenuItem value={'Estacion ejemplo 2'}>Estacion ejemplo 2</MenuItem>
+                            <MenuItem value={'Estacion ejemplo 3'}>Estacion ejemplo 3</MenuItem>
+                        </Select>
+                    </div>
+                    <br/><br/>
+                    <div>
+                        <Button
+                            color={'primary'}
+                            variant="contained"
+                            startIcon={<AddCircleOutlineIcon/>}
+                            onClick={()=>{
+                                console.log('Accion del boton: Agregar ruta')
+                            }}>
+                            Agregar ruta
+                        </Button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <Button
+                            color={'secondary'}
+                            variant="contained"
+                            startIcon={<HighlightOffIcon/>}
+                            onClick={()=>{
+                                console.log('Accion del boton: Eliminar ruta')
+                            }}>
+                            Eliminar ruta
+                        </Button>
+                    </div>
+                    <br/>
+                    <Divider variant={'middle'}/>
+                    <Divider variant={'middle'}/>
                 </div>
-                <br/><br/>
+            );
+        }else{
+            return (
                 <div>
-                    <Button
-                        color={'primary'}
-                        variant="contained"
-                        startIcon={<AddCircleOutlineIcon/>}
-                        onClick={()=>{
-                            console.log('Accion del boton: Agregar ruta')
-                        }}>
-                        Agregar ruta
-                    </Button>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <Button
-                        color={'secondary'}
-                        variant="contained"
-                        startIcon={<HighlightOffIcon/>}
-                        onClick={()=>{
-                            console.log('Accion del boton: Eliminar ruta')
-                        }}>
-                        Eliminar ruta
-                    </Button>
                 </div>
-                <br/>
-                <Divider variant={'middle'}/>
-                <Divider variant={'middle'}/>
-            </div>
-        );
+            )
+        }
     }
 }
 

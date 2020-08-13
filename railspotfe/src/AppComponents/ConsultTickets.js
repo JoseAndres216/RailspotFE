@@ -28,78 +28,85 @@ class ConsultTickets extends Component{
 
 
     render() {
-        return(
-            <div>
-                <br/>
-                <text className={'Text'}>Consultas</text>
-                <br/><br/>
+        if(this.props.showing){
+            return(
                 <div>
-                    <Select onChange={this.stationChanged}
-                            value={this.option}>
-                        <MenuItem value={''}><em>Seleccione una estacion</em></MenuItem>
-                        <MenuItem value={'Estacion ejemplo 1'}>Fecha</MenuItem>
-                        <MenuItem value={'Estacion ejemplo 2'}>ID</MenuItem>
-                        <MenuItem value={'Estacion ejemplo 3'}>Estacion</MenuItem>
-                    </Select>
-                </div>
-                <br/><br/>
-                <div>
-                    <form>
-                        <TextField
-                            id="date"
-                            label="Fecha de Viaje"
-                            type="date"
-                            InputLabelProps={{
-                                shrink: true,
-                            }}/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <TextField
-                            color={'primary'}
-                            required={true}
-                            placeholder={"ID de usuario"}
-                            id="txtStation"
-                            variant="outlined"
-                            onChange={this.userChanged}/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <Select onChange={this.stationChanged}
-                                value={this.station}>
-                            <MenuItem value={''}><em>Seleccione una estacion</em></MenuItem>
-                            <MenuItem value={'Estacion ejemplo 1'}>Estacion 1</MenuItem>
-                            <MenuItem value={'Estacion ejemplo 2'}>Estacion 2</MenuItem>
-                            <MenuItem value={'Estacion ejemplo 3'}>Estacion 3</MenuItem>
-                        </Select>
-                    </form>
+                    <br/>
+                    <text className={'Text'}>Consultas</text>
+                    <br/><br/>
                     <div>
-                        <br/>
-                        <Button
-                            color={"primary"}
-                            variant="contained"
-                            onClick={()=>{
-                                console.log('Accion del boton: Realizar consulta')
-                            }}>
-                            Realizar consulta
-                        </Button>
-                        <br /><br />
-                        <Card>
-                            <CardContent>
-                                <Typography align='center' variant='h6' color="textSecondary">
-                                    {'Fecha: En este dia hay x viajes.'}
-                                    <br />
-                                    {'ID: este usuario tiene 23189312 viajes activos.'}
-                                    <br />
-                                    {'Estacion: por esta estacion pasan 123 trenes.'}
-                                    <br />
-                                    {'Mucho Texto'}
-                                </Typography>
-                            </CardContent>
-                        </Card>
+                        <Select onChange={this.stationChanged}
+                                value={this.option}>
+                            <MenuItem value={''}><em>Seleccione una estacion</em></MenuItem>
+                            <MenuItem value={'Estacion ejemplo 1'}>Fecha</MenuItem>
+                            <MenuItem value={'Estacion ejemplo 2'}>ID</MenuItem>
+                            <MenuItem value={'Estacion ejemplo 3'}>Estacion</MenuItem>
+                        </Select>
                     </div>
+                    <br/><br/>
+                    <div>
+                        <form>
+                            <TextField
+                                id="date"
+                                label="Fecha de Viaje"
+                                type="date"
+                                InputLabelProps={{
+                                    shrink: true,
+                                }}/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <TextField
+                                color={'primary'}
+                                required={true}
+                                placeholder={"ID de usuario"}
+                                id="txtStation"
+                                variant="outlined"
+                                onChange={this.userChanged}/>
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                            <Select onChange={this.stationChanged}
+                                    value={this.station}>
+                                <MenuItem value={''}><em>Seleccione una estacion</em></MenuItem>
+                                <MenuItem value={'Estacion ejemplo 1'}>Estacion 1</MenuItem>
+                                <MenuItem value={'Estacion ejemplo 2'}>Estacion 2</MenuItem>
+                                <MenuItem value={'Estacion ejemplo 3'}>Estacion 3</MenuItem>
+                            </Select>
+                        </form>
+                        <div>
+                            <br/>
+                            <Button
+                                color={"primary"}
+                                variant="contained"
+                                onClick={()=>{
+                                    console.log('Accion del boton: Realizar consulta')
+                                }}>
+                                Realizar consulta
+                            </Button>
+                            <br /><br />
+                            <Card>
+                                <CardContent>
+                                    <Typography align='center' variant='h6' color="textSecondary">
+                                        {'Fecha: En este dia hay x viajes.'}
+                                        <br />
+                                        {'ID: este usuario tiene 23189312 viajes activos.'}
+                                        <br />
+                                        {'Estacion: por esta estacion pasan 123 trenes.'}
+                                        <br />
+                                        {'Mucho Texto'}
+                                    </Typography>
+                                </CardContent>
+                            </Card>
+                        </div>
+                    </div>
+                    <br/>
+                    <Divider variant={'middle'}/>
+                    <Divider variant={'middle'}/>
                 </div>
-                <br/>
-                <Divider variant={'middle'}/>
-                <Divider variant={'middle'}/>
-            </div>
-        );
+            );
+        }else{
+            return (
+                <div>
+                </div>
+            )
+        }
     }
 }
 

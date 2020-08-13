@@ -17,7 +17,8 @@ class TicketInformation extends Component{
             //station2: '[estacion 2]',
             date: Date,
             quantity: 0,
-            tvdCertification: false
+            tvdCertification: false,
+            show: false
         };
     }
 
@@ -54,7 +55,9 @@ class TicketInformation extends Component{
                             variant="contained"
                             endIcon={<ShoppingCartIcon/>}
                             onClick={()=>{
-                                this.setState({show: !this.state.show})
+                                if(this.state.show === false){
+                                    this.setState({show: !this.state.show})
+                                }
                             }}>
                             Realizar Compra
                         </Button>
