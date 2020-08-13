@@ -9,6 +9,9 @@ import RutesEdition from "./RutesEdition";
 import StationsEdition from "./StationsEdition";
 import ConsultTickets from "./ConsultTickets";
 
+/*
+Class for the admin log in subcomponent
+ */
 class AdminLogIn extends Component{
     constructor(props) {
         super(props);
@@ -19,6 +22,9 @@ class AdminLogIn extends Component{
         };
     }
 
+    /*
+    Methods for refreshing dynamically the class states
+    */
     userChanged = (event) => {
         this.setState({
             user: event.target.value
@@ -33,6 +39,9 @@ class AdminLogIn extends Component{
         console.log(this.state.password)
     };
 
+    /*
+    Method for "drawing" all the class components
+    */
     render() {
         return(
             <div>

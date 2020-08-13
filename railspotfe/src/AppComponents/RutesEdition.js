@@ -9,6 +9,9 @@ import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 import TextField from "@material-ui/core/TextField";
 
+/*
+Class for the rutes editor subcomponent
+ */
 class RutesEdition extends Component{
     constructor(props) {
         super(props);
@@ -19,6 +22,9 @@ class RutesEdition extends Component{
         };
     }
 
+    /*
+    Methods for refreshing dynamically the class states
+    */
     station1Changed = (event) => {
         this.setState({
             station1: event.target.value
@@ -40,6 +46,9 @@ class RutesEdition extends Component{
         console.log('El valor de station2 es: ' + this.state.distance)
     };
 
+    /*
+    Method for "drawing" all the class components
+    */
     render() {
         if(this.props.showing){
             return(

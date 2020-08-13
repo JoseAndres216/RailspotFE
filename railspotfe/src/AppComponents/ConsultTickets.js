@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import './ConsultTickets.css'
 
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -6,7 +7,9 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 
-
+/*
+Class for the tickets consults subcomponent
+ */
 class ConsultTickets extends Component{
     constructor(props) {
         super(props);
@@ -18,6 +21,9 @@ class ConsultTickets extends Component{
         }
     }
 
+    /*
+    Methods for refreshing dynamically the class states
+    */
     optionChanged = (event) => {
         this.setState({
             option: event.target.value
@@ -46,7 +52,9 @@ class ConsultTickets extends Component{
         console.log('El valor de station es: ' + this.state.date)
     };
 
-
+    /*
+    Method for "drawing" all the class components
+    */
     render() {
         if(this.props.showing){
             return(

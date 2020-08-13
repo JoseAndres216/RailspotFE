@@ -1,10 +1,14 @@
 import React, {Component} from "react";
+import './TicketBill.css'
 
 import Divider from "@material-ui/core/Divider";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 
+/*
+Class for the ticket bill subcomponent
+ */
 class TicketBill extends Component{
     constructor(props) {
         super(props);
@@ -13,6 +17,9 @@ class TicketBill extends Component{
         };
     }
 
+    /*
+    Method for "drawing" all the class components
+    */
     render() {
         if(this.props.show){
             return(

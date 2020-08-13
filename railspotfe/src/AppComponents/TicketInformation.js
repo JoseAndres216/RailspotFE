@@ -9,6 +9,9 @@ import Button from "@material-ui/core/Button";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
 import TicketBill from "./TicketBill";
 
+/*
+Class for the ticket information subcomponent
+ */
 class TicketInformation extends Component{
     constructor(props) {
         super(props);
@@ -19,6 +22,9 @@ class TicketInformation extends Component{
         };
     }
 
+    /*
+    Method for "drawing" all the class components
+    */
     render() {
         if(this.props.show){
             return(

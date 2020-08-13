@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import './StationsEdition.css'
 
 import Divider from "@material-ui/core/Divider";
 import TextField from "@material-ui/core/TextField";
@@ -6,6 +7,9 @@ import Button from "@material-ui/core/Button";
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
+/*
+Class for the stations editor subcomponent
+ */
 class StationsEdition extends Component{
     constructor(props) {
         super(props);
@@ -16,6 +20,9 @@ class StationsEdition extends Component{
         };
     }
 
+    /*
+    Methods for refreshing dynamically the class states
+    */
     nameChanged = (event) => {
         this.setState({
             name: event.target.value
@@ -37,6 +44,9 @@ class StationsEdition extends Component{
         console.log(this.state.y)
     };
 
+    /*
+    Method for "drawing" all the class components
+    */
     render() {
         if(this.props.showing){
             return(

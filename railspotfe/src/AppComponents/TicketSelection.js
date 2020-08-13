@@ -9,6 +9,9 @@ import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
 import TicketInformation from "./TicketInformation";
 
+/*
+Class for the ticket selection subcomponent
+ */
 class TicketSelection extends Component{
     constructor(props) {
         super(props);
@@ -23,6 +26,9 @@ class TicketSelection extends Component{
         };
     }
 
+    /*
+    Methods for refreshing dynamically the class states
+    */
     station1Changed = (event) => {
         this.setState({
             station1: event.target.value
@@ -81,7 +87,9 @@ class TicketSelection extends Component{
         console.log('El valor de tvd es: ' + this.state.tvdCertification)
     };
 
-
+    /*
+    Method for "drawing" all the class components
+    */
     render() {
         return(
             <div>
@@ -198,15 +206,15 @@ class TicketSelection extends Component{
                             }
                         }}>
                         Seleccionar tiquete
-                        </Button>
-                    </div>
+                    </Button>
+                </div>
 
-                    <br/>
-                    <Divider variant={'middle'}/>
-                    <Divider variant={'middle'}/>
-                    <TicketInformation station1 = {this.state.station1} station2 = {this.state.station2} show = {this.state.show}
-                    quantity = {this.state.quantity} date = {this.state.date} id = {this.state.id}/>
-                    </div>
+                <br/>
+                <Divider variant={'middle'}/>
+                <Divider variant={'middle'}/>
+                <TicketInformation station1 = {this.state.station1} station2 = {this.state.station2} show = {this.state.show}
+                                   quantity = {this.state.quantity} date = {this.state.date} id = {this.state.id}/>
+            </div>
 
         );
     }
