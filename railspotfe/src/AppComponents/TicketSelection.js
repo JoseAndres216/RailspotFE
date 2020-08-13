@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import TicketInformation from "./TicketInformation";
 import './TicketSelection.css'
 
 import Divider from "@material-ui/core/Divider";
@@ -7,7 +8,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Checkbox from "@material-ui/core/Checkbox";
 import Button from "@material-ui/core/Button";
-import TicketInformation from "./TicketInformation";
+import ConfirmationNumberIcon from '@material-ui/icons/ConfirmationNumber';
 
 /*
 Class for the ticket selection subcomponent
@@ -165,7 +166,8 @@ class TicketSelection extends Component{
                     <Button
                         id='btnSelectticket'
                         color={'primary'}
-                        variant="contained"   //this.setState({show: !this.state.show})
+                        variant="contained"
+                        endIcon={<ConfirmationNumberIcon/>}
                         onClick={() => {
                             if(this.state.station1 !== this.state.station2) {
                                 if (this.state.id !== '[id]') {

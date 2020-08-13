@@ -5,8 +5,9 @@ import Divider from "@material-ui/core/Divider";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
-import HighlightOffIcon from "@material-ui/icons/HighlightOff";
 import Button from "@material-ui/core/Button";
+import ConfirmationNumberIcon from '@material-ui/icons/ConfirmationNumber';
+
 
 /*
 Class for the ticket bill subcomponent
@@ -79,8 +80,9 @@ class TicketBill extends Component{
                     <Button
                         color={'primary'}
                         variant="contained"
+                        endIcon={<ConfirmationNumberIcon/>}
                         onClick={() => {window.location.reload()}}>
-                        Listo
+                        Comprar más tiquetes
                     </Button>
                     <br/>
                     <br/>
