@@ -4,8 +4,6 @@ import AdminLogIn from './AppComponents/AdminLogIn';
 import ConsultTickets from "./AppComponents/ConsultTickets";
 import RutesEdition from "./AppComponents/RutesEdition";
 import StationsEdition from "./AppComponents/StationsEdition";
-import TicketBill from "./AppComponents/TicketBill";
-import TicketInformation from "./AppComponents/TicketInformation";
 import TicketSelection from "./AppComponents/TicketSelection";
 
 class App extends Component{
@@ -13,9 +11,8 @@ class App extends Component{
     return(
       <div className={'Background'}>
         <text className={'Headers'}>Railspot</text>
+          <br/><br/>
         <TicketSelection/>
-        <TicketInformation/>
-        <TicketBill/>
         <AdminLogIn/>
         <RutesEdition/>
         <StationsEdition/>

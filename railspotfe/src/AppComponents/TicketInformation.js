@@ -7,13 +7,14 @@ import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
+import TicketBill from "./TicketBill";
 
 class TicketInformation extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            station1: '[estacion 1]',
-            station2: '[estacion 2]',
+            //station1: '[estacion 1]',
+            //station2: '[estacion 2]',
             date: Date,
             quantity: 0,
             tvdCertification: false
@@ -21,48 +22,59 @@ class TicketInformation extends Component{
     }
 
     render() {
-        return(
-            <div>
-                <br/>
-                <text className={'Text'}>Información sobre el(los) tiquete(s)</text>
-                <br/><br/>
+        if(this.props.show){
+            return(
                 <div>
-                    <Card>
-                        <CardContent>
-                            <Typography align='center' variant='h6' color="textSecondary">
-                                {'Su viaje iniciara en ' + this.state.station1 + ' y terminará en ' + this.state.station2}
-                                <br />
-                                {'- Proyectos en una semana'}
-                                <br />
-                                {'- Pasar cursos sin saber como'}
-                                <br />
-                                {'- Mucha cafeina'}
-                                <br />
-                                {'- Compañeros que no hacen nada'}
-                                <br />
-                                {'- Ser bendecido por algun profesor bueno'}
-                                <br />
-                                {'- El costo de su(s) tiquete(s) es de 100 pesos'}
-                            </Typography>
-                        </CardContent>
-                    </Card>
                     <br/>
-                    <Button
-                        color={"primary"}
-                        variant="contained"
-                        endIcon={<ShoppingCartIcon/>}
-                        onClick={()=>{
-                            console.log('Accion del boton: Realizar compra')
-                        }}>
-                        Realizar Compra
-                    </Button>
-                    <br/>
+                    <text className={'Text'}>Información sobre el(los) tiquete(s)</text>
+                    <br/><br/>
+                    <div>
+                        <Card>
+                            <CardContent>
+                                <Typography align='center' variant='h6' color="textSecondary">
+                                    {'Su viaje iniciara en ' + this.props.station1 + ' y terminará en ' + this.props.station2}
+                                    <br />
+                                    {'- Su viaje pasara por las siguientes estaciones:'}
+                                    <br />
+                                    {'- '}
+                                    <br />
+                                    {'- '}
+                                    <br />
+                                    {'- '}
+                                    <br />
+                                    {'- Se compraran ' + this.props.quantity + ' tiquetes para el viaje, reservados para ' + this.props.date}
+                                    <br />
+                                    {'- Y cada uno costara x con el descuento aplicado' }
+                                </Typography>
+                            </CardContent>
+                        </Card>
+                        <br/>
+                        <Button
+                            color={"primary"}
+                            variant="contained"
+                            endIcon={<ShoppingCartIcon/>}
+                            onClick={()=>{
+                                this.setState({show: !this.state.show})
+                            }}>
+                            Realizar Compra
+                        </Button>
+                        <br/>
+                    </div>
+                    <br />
+                    <Divider variant={'middle'}/>
+                    <Divider variant={'middle'}/>
+                    <TicketBill station1 = {this.props.station1} station2 = {this.props.station2} show = {this.state.show}
+                                quantity = {this.props.quantity} date = {this.props.date}/>
                 </div>
-                <br />
-                <Divider variant={'middle'}/>
-                <Divider variant={'middle'}/>
-            </div>
-        );
+            );
+        }else{
+            return(
+                <div>
+
+                </div>
+            )
+        }
+
     }
 }
 

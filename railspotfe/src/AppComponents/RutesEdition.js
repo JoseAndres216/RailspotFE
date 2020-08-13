@@ -13,7 +13,8 @@ class RutesEdition extends Component{
         super(props);
         this.state = {
             station1: '[estacion 1]',
-            station2: '[estacion 2]'
+            station2: '[estacion 2]',
+            price: 0.0
         };
     }
 
