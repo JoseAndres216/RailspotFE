@@ -1,12 +1,11 @@
 .Headers{
-  font-family: "Copperplate Gothic Light";
+  font-family: "Bell MT";
   font-style: italic;
-  font-size: 70px;
+  font-size: 100px;
   color: #263238;
 }
 
 .Background{
-  //background-color:  #263238 ;
   background-color: #EFEFEF;
   text-align: center;
   padding: 30px;

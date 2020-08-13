@@ -1,15 +1,42 @@
 import React, {Component} from "react";
 
 import Divider from "@material-ui/core/Divider";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 
 class StationsEdition extends Component{
+    constructor(props) {
+        super(props);
+        this.state = {
+            name: '[Station name]',
+            x: 0,
+            y: 0
+        };
+    }
+
+    nameChanged = (event) => {
+        this.setState({
+            name: event.target.value
+        })
+        console.log(this.state.name)
+    };
+
+    xChanged = (event) => {
+        this.setState({
+            x: event.target.value
+        })
+        console.log(this.state.x)
+    };
+
+    yChanged = (event) => {
+        this.setState({
+            y: event.target.value
+        })
+        console.log(this.state.y)
+    };
+
     render() {
         if(this.props.showing){
             return(
@@ -17,30 +44,15 @@ class StationsEdition extends Component{
                     <br/>
                     <text className={'Text'}>Edición de estaciones</text>
                     <br/><br/>
-                    <Card>
-                        <CardContent>
-                            <Typography align='center' variant='h6' color="textSecondary">
-                                {' '}
-                                <br />
-                                {' '}
-                                <br />
-                                {'Aqui va el grafo'}
-                                <br />
-                                {' '}
-                                <br />
-                                {'Mucho Texto ahre'}
-                            </Typography>
-                        </CardContent>
-                    </Card>
-                    <br/>
                     <div>
                         <TextField
                             color={'primary'}
                             required={true}
-                            placeholder={"Nombre de estación"}
+                            placeholder={"Nombre de la estación"}
                             id="txtStation"
                             variant="outlined"
-                            onChange={this.userChanged}/>
+                            label='Nombre de la estación'
+                            onChange={this.nameChanged}/>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <TextField
                             color={'primary'}
@@ -48,7 +60,8 @@ class StationsEdition extends Component{
                             placeholder={"Posición en x"}
                             id="txtStation"
                             variant="outlined"
-                            onChange={this.userChanged}/>
+                            label='Posicion en x'
+                            onChange={this.xChanged}/>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <TextField
                             color={'primary'}
@@ -56,7 +69,8 @@ class StationsEdition extends Component{
                             placeholder={"Posición en y"}
                             id="txtStation"
                             variant="outlined"
-                            onChange={this.userChanged}/>
+                            label='Posicion en y'
+                            onChange={this.yChanged}/>
                     </div>
                     <br/>
                     <div>
@@ -65,7 +79,19 @@ class StationsEdition extends Component{
                             variant="contained"
                             startIcon={<AddCircleOutlineIcon/>}
                             onClick={()=>{
-                                console.log('Accion del boton: Agregar estacion')
+                                if(this.state.name !== '[Station name]' && this.state.name !== ''){
+                                    try{
+                                        if(this.state.x >= 0 && this.state.y >= 0){
+
+                                        } else {
+                                            alert('Digite unas coordenadas válidas')
+                                        }
+                                    } catch {
+                                        alert('Digite unas coordenadas válidas')
+                                    }
+                                } else {
+                                    alert('Digite una estacion válida')
+                                }
                             }}>
                             Agregar estación
                         </Button>
@@ -75,7 +101,11 @@ class StationsEdition extends Component{
                             variant="contained"
                             startIcon={<HighlightOffIcon/>}
                             onClick={()=>{
-                                console.log('Accion del boton: Eliminar estacion')
+                                if(this.state.name !== '[Station name]' && this.state.name !== ''){
+
+                                } else {
+                                    alert('Digite una estacion válida')
+                                }
                             }}>
                             Eliminar estación
                         </Button>

@@ -13,11 +13,8 @@ class TicketInformation extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            //station1: '[estacion 1]',
-            //station2: '[estacion 2]',
-            date: Date,
-            quantity: 0,
-            tvdCertification: false,
+            price: 0.0,
+            troughStations: [],
             show: false
         };
     }
@@ -33,19 +30,15 @@ class TicketInformation extends Component{
                         <Card>
                             <CardContent>
                                 <Typography align='center' variant='h6' color="textSecondary">
-                                    {'Su viaje iniciara en ' + this.props.station1 + ' y terminará en ' + this.props.station2}
+                                    {'Su viaje iniciará en ' + this.props.station1 + ' y terminará en ' + this.props.station2}
                                     <br />
-                                    {'- Su viaje pasara por las siguientes estaciones:'}
-                                    <br />
-                                    {'- '}
+                                    {'Su viaje pasará por las siguientes estaciones:'}
                                     <br />
                                     {'- '}
                                     <br />
-                                    {'- '}
+                                    {'Se comprarán ' + this.props.quantity + ' tiquetes para el viaje, reservados para el día: ' + this.props.date}
                                     <br />
-                                    {'- Se compraran ' + this.props.quantity + ' tiquetes para el viaje, reservados para ' + this.props.date}
-                                    <br />
-                                    {'- Y cada uno costara x con el descuento aplicado' }
+                                    {'Y cada uno tendrá un costo de ' + this.state.price + ' colones' }
                                 </Typography>
                             </CardContent>
                         </Card>
@@ -67,7 +60,8 @@ class TicketInformation extends Component{
                     <Divider variant={'middle'}/>
                     <Divider variant={'middle'}/>
                     <TicketBill station1 = {this.props.station1} station2 = {this.props.station2} show = {this.state.show}
-                                quantity = {this.props.quantity} date = {this.props.date}/>
+                                quantity = {this.props.quantity} date = {this.props.date} id = {this.props.id}
+                                price = {this.state.price} troughStations = {this.state.troughStations}/>
                 </div>
             );
         }else{

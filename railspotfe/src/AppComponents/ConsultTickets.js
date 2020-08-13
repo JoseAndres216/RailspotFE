@@ -4,9 +4,6 @@ import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-import Card from "@material-ui/core/Card";
 import Divider from "@material-ui/core/Divider";
 
 
@@ -15,15 +12,38 @@ class ConsultTickets extends Component{
         super(props);
         this.state = {
             option : '[opcion]',
-            station : '[estacion]'
+            station : '[estacion]',
+            id: '[id]',
+            date: '[fecha]'
         }
     }
+
+    optionChanged = (event) => {
+        this.setState({
+            option: event.target.value
+        })
+        console.log('El valor de station es: ' + this.state.option)
+    };
 
     stationChanged = (event) => {
         this.setState({
             station: event.target.value
         })
-        console.log('El valor de station es: ' + this.station)
+        console.log('El valor de station es: ' + this.state.station)
+    };
+
+    idChanged = (event) => {
+        this.setState({
+            id: event.target.value
+        })
+        console.log('El valor de station es: ' + this.state.id)
+    };
+
+    dateChanged = (event) => {
+        this.setState({
+            date: event.target.value
+        })
+        console.log('El valor de station es: ' + this.state.date)
     };
 
 
@@ -35,12 +55,12 @@ class ConsultTickets extends Component{
                     <text className={'Text'}>Consultas</text>
                     <br/><br/>
                     <div>
-                        <Select onChange={this.stationChanged}
-                                value={this.option}>
-                            <MenuItem value={''}><em>Seleccione una estacion</em></MenuItem>
-                            <MenuItem value={'Estacion ejemplo 1'}>Fecha</MenuItem>
-                            <MenuItem value={'Estacion ejemplo 2'}>ID</MenuItem>
-                            <MenuItem value={'Estacion ejemplo 3'}>Estacion</MenuItem>
+                        <Select onChange={this.optionChanged}
+                                value={this.state.option}>
+                            <MenuItem value={'[opcion]'}><em>Seleccione una opción</em></MenuItem>
+                            <MenuItem value={'fecha'}>Fecha</MenuItem>
+                            <MenuItem value={'id'}>ID</MenuItem>
+                            <MenuItem value={'estacion'}>Estacion</MenuItem>
                         </Select>
                     </div>
                     <br/><br/>
@@ -52,7 +72,9 @@ class ConsultTickets extends Component{
                                 type="date"
                                 InputLabelProps={{
                                     shrink: true,
-                                }}/>
+                                }}
+                                variant='outlined'
+                                onChange={this.dateChanged}/>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <TextField
                                 color={'primary'}
@@ -60,14 +82,15 @@ class ConsultTickets extends Component{
                                 placeholder={"ID de usuario"}
                                 id="txtStation"
                                 variant="outlined"
-                                onChange={this.userChanged}/>
+                                label='ID de usuario'
+                                onChange={this.idChanged}/>
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                             <Select onChange={this.stationChanged}
-                                    value={this.station}>
-                                <MenuItem value={''}><em>Seleccione una estacion</em></MenuItem>
-                                <MenuItem value={'Estacion ejemplo 1'}>Estacion 1</MenuItem>
-                                <MenuItem value={'Estacion ejemplo 2'}>Estacion 2</MenuItem>
-                                <MenuItem value={'Estacion ejemplo 3'}>Estacion 3</MenuItem>
+                                    value={this.state.station}>
+                                <MenuItem value={'[estacion]'}><em>Seleccione una estacion</em></MenuItem>
+                                <MenuItem value={'Estacion ejemplo 1'}>Estacion ejemplo 1</MenuItem>
+                                <MenuItem value={'Estacion ejemplo 2'}>Estacion ejemplo 2</MenuItem>
+                                <MenuItem value={'Estacion ejemplo 3'}>Estacion ejemplo 3</MenuItem>
                             </Select>
                         </form>
                         <div>
@@ -76,24 +99,40 @@ class ConsultTickets extends Component{
                                 color={"primary"}
                                 variant="contained"
                                 onClick={()=>{
-                                    console.log('Accion del boton: Realizar consulta')
+                                    if(this.state.option !== '[opcion]'){
+                                        if(this.state.option === 'fecha'){
+                                            if(this.state.date !== '[fecha]'){
+
+                                            } else {
+                                                alert('Digite una fecha válida')
+                                            }
+                                        } else {
+                                            if(this.state.option === 'id'){
+                                                if(this.state.id !== '[id]'){
+
+                                                } else {
+                                                    alert('Digite un ID válida')
+                                                }
+                                            } else {
+                                                if(this.state.option === 'estacion') {
+                                                    if(this.state.station !== '[estacion]') {
+
+                                                    } else {
+                                                        alert('Digite una estacion válida')
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    } else {
+                                        alert('Digite una opción válida')
+                                    }
                                 }}>
                                 Realizar consulta
                             </Button>
                             <br /><br />
-                            <Card>
-                                <CardContent>
-                                    <Typography align='center' variant='h6' color="textSecondary">
-                                        {'Fecha: En este dia hay x viajes.'}
-                                        <br />
-                                        {'ID: este usuario tiene 23189312 viajes activos.'}
-                                        <br />
-                                        {'Estacion: por esta estacion pasan 123 trenes.'}
-                                        <br />
-                                        {'Mucho Texto'}
-                                    </Typography>
-                                </CardContent>
-                            </Card>
+                            <table>
+
+                            </table>
                         </div>
                     </div>
                     <br/>

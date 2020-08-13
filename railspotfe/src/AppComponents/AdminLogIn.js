@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import axios from 'axios';
 import './AdminLogIn.css'
 
 import TextField from "@material-ui/core/TextField";
@@ -71,25 +70,29 @@ class AdminLogIn extends Component{
                         variant="contained"
                         endIcon={<PersonIcon/>}
                         onClick={()=> {
-                            if(this.state.showing === false){ //esta vara
-                                this.setState({showing: !this.state.showing})
-                            }
-                            /*try {
-                                var httpResult = axios({
-                                    method: "GET",
-                                    url: `http://localhost/admin/login?user=` + this.state.user + '&password='
-                                            + this.state.password
-                                });
-                                httpResult
-                                    .then((response) => {
-                                        console.log(response); //esa vara va aqui
-                                    })
-                                    .catch((error) => {
-                                        console.log(error);
+                            if(this.state.user!=='[Usuario]' && this.state.password !== '[Contraseña]'){
+                                if(this.state.showing === false){ //esta vara
+                                    this.setState({showing: !this.state.showing})
+                                }
+                                /*try {
+                                    var httpResult = axios({
+                                        method: "GET",
+                                        url: `http://localhost/admin/login?user=` + this.state.user + '&password='
+                                                + this.state.password
                                     });
-                            } catch (error) {
-                                console.log(error);
-                            }*/
+                                    httpResult
+                                        .then((response) => {
+                                            console.log(response); //esa vara va aqui
+                                        })
+                                        .catch((error) => {
+                                            console.log(error);
+                                        });
+                                } catch (error) {
+                                    console.log(error);
+                                }*/
+                            } else {
+                                alert('Digite un usuario y/o contraseña válido')
+                            }
                         }}>
                         Iniciar sesion
                     </Button>

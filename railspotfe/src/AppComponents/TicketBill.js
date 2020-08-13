@@ -9,15 +9,7 @@ class TicketBill extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            id: '[id de usuario]',
-            //station1: '[estacion 1]',
-            //station2: '[estacion 2]',
-            troughStations: [],
-            //date: Date,
-            tvdCertification: false,
-            //quantity: 0,
-            ticketPrice: 0.0,
-            discount: 0.0
+            discount: ((this.props.price * this.props.quantity) *(0.02*this.props.quantity))
         };
     }
 
@@ -39,22 +31,24 @@ class TicketBill extends Component{
                                 <br />
                                 {'Hora: ' + new Date().getHours() + ':' + new Date().getMinutes()}
                                 <br />
-                                {'Cliente #' + this.state.id}
+                                {'Cliente: ' + this.props.id}
                                 <br /><br />
-                                {'Viaje desde: ' + this.props.station1 + ' hasta: ' + this.props.station2}
+                                {'Inicio del viaje: ' + this.props.station1}
+                                <br />
+                                {'Final del viaje: ' + this.props.station2}
                                 <br />
                                 {'Tiquete(s) reservado(s) para el dia: ' + this.props.date}
                                 <br />
                                 {'Total de tiquetes reservados: ' + this.props.quantity}
                                 <br /><br />
                                 {'Costo por tiquete: .................................................................... c'
-                                + this.state.ticketPrice}
+                                + this.props.price}
                                 <br />
                                 {'Descuento aplicado: ................................................................ c'
                                 + this.state.discount}
                                 <br />
                                 {'Costo total: .............................................................................. c'
-                                + ((this.state.ticketPrice * this.props.quantity) - this.state.discount)}
+                                + ((this.props.price * this.props.quantity) - this.state.discount)}
                                 <br /><br />
                                 {'Gracias por preferirnos!'}
                                 <br /><br />

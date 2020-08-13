@@ -13,11 +13,12 @@ class TicketSelection extends Component{
     constructor(props) {
         super(props);
         this.state = {
+            id: '[id]',
             station1: '[estacion 1]',
             station2: '[estacion 2]',
             date: '[Date]',
             quantity: 0,
-            tvdCertification: false,
+            tvdCertification: true,
             show: false
         };
     }
@@ -26,6 +27,11 @@ class TicketSelection extends Component{
         this.setState({
             station1: event.target.value
         })
+        if(this.state.station1 === this.state.station2){
+            this.setState({
+                show: false
+            })
+        }
         console.log('El valor de station1 es: ' + this.state.station1)
     };
 
@@ -33,12 +39,18 @@ class TicketSelection extends Component{
         this.setState({
             station2: event.target.value
         })
+        if(this.state.station1 === this.state.station2){
+            this.setState({
+                show: false
+            })
+        }
         console.log('El valor de station2 es: ' + this.state.station2)
     };
 
     dateChanged = (event) => {
         this.setState({
-            date: event.target.value
+            date: event.target.value,
+            tvdCertification: false
         })
         console.log('El valor de date es: ' + this.state.date)
     };
@@ -47,13 +59,25 @@ class TicketSelection extends Component{
         this.setState({
             quantity: event.target.value
         })
-        console.log('Cantidad de tiquetes: ' + this.state.date)
+        console.log('Cantidad de tiquetes: ' + this.state.quantity)
+    }
+
+    idChanged = (event) => {
+        this.setState({
+            id: event.target.value
+        })
+        console.log('Cantidad de tiquetes: ' + this.state.id)
     }
 
     tvdCertifChanged = () => {
         this.setState({
-            tvdCertification: !this.state.tvdCertification
+            tvdCertification: !this.state.tvdCertification,
         })
+        if(this.state.tvdCertification){
+            this.setState({
+                date: 'Fecha con certificación TVD'
+            })
+        }
         console.log('El valor de tvd es: ' + this.state.tvdCertification)
     };
 
@@ -66,6 +90,16 @@ class TicketSelection extends Component{
                 <br/>
                 <text className={'Text'}>Seleccion de ruta</text>
                 <br/><br/>
+                <TextField
+                    color={'primary'}
+                    required={true}
+                    placeholder={"Número de cédula"}
+                    id="txbid"
+                    label="Número de cédula"
+                    variant="outlined"
+                    onChange={this.idChanged}
+                />
+                <br /><br />
                 <div>
                     <Select
                         onChange={this.station1Changed}
@@ -118,35 +152,49 @@ class TicketSelection extends Component{
                     <Checkbox color='primary' onChange={this.tvdCertifChanged}> </Checkbox>
                     <text className={'Body'}>Desea comprar tiquetes para varios dias del mes? (certificacion TVD)</text>
                 </div>
-                <br/><br/>
+                <br/>
                 <div>
                     <Button
                         id='btnSelectticket'
                         color={'primary'}
                         variant="contained"   //this.setState({show: !this.state.show})
                         onClick={() => {
-                            if(this.state.station1 !== '[estacion 1]'){
-                                if(this.state.station2 !== '[estacion 2]'){
-                                    if(this.state.date !=='[Date]'){
-                                        try {
-                                            if(this.state.quantity > 0){
-                                                if(this.state.show === false){
-                                                    this.setState({show: !this.state.show})
+                            if(this.state.station1 !== this.state.station2) {
+                                if (this.state.id !== '[id]') {
+                                    if (this.state.station1 !== '[estacion 1]') {
+                                        if (this.state.station2 !== '[estacion 2]') {
+                                            if (this.state.date !== '[Date]' || this.state.tvdCertification) {
+                                                try {
+                                                    if (this.state.quantity > 0) {
+                                                        if (this.state.show === false) {
+                                                            this.setState({show: !this.state.show})
+                                                            if (this.state.tvdCertification) {
+                                                                this.setState({
+                                                                    date: 'Fecha con certificación TVD'
+                                                                })
+                                                            }
+                                                            console.log(this.state.date)
+                                                        }
+                                                    } else {
+                                                        alert('Digite una cantidad de tiquetes válida')
+                                                    }
+                                                } catch (e) {
+                                                    alert('Digite una cantidad de tiquetes válida')
                                                 }
-                                            }else{
-                                                alert('Digite un valor valido')
+                                            } else {
+                                                alert('Digite una fecha válida')
                                             }
-                                        }catch (e) {
-                                            alert('Digite un numero')
+                                        } else {
+                                            alert('Digite una estación de llegada válida')
                                         }
-                                    }else{
-                                        alert('Digite una fecha')
+                                    } else {
+                                        alert('Digite una estación de salida válida')
                                     }
-                                }else{
-                                    alert('Digite una estacion de llegada')
+                                } else {
+                                    alert('Digite una identificación válida')
                                 }
-                            }else{
-                                alert('Digite una estacion de salida')
+                            } else {
+                                alert('Digite dos estaciones diferentes')
                             }
                         }}>
                         Seleccionar tiquete
@@ -157,7 +205,7 @@ class TicketSelection extends Component{
                     <Divider variant={'middle'}/>
                     <Divider variant={'middle'}/>
                     <TicketInformation station1 = {this.state.station1} station2 = {this.state.station2} show = {this.state.show}
-                    quantity = {this.state.quantity} date = {this.state.date}/>
+                    quantity = {this.state.quantity} date = {this.state.date} id = {this.state.id}/>
                     </div>
 
         );
