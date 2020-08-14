@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import './AdminLogIn.css'
 
+import axios from 'axios';
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
@@ -12,7 +13,7 @@ import ConsultTickets from "./ConsultTickets";
 /*
 Class for the admin log in subcomponent
  */
-class AdminLogIn extends Component{
+class AdminLogIn extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -43,7 +44,7 @@ class AdminLogIn extends Component{
     Method for "drawing" all the class components
     */
     render() {
-        return(
+        return (
             <div>
                 <br/>
                 <text className={'Text'}>Iniciar sesion como administrador</text>
@@ -78,27 +79,30 @@ class AdminLogIn extends Component{
                         color={'primary'}
                         variant="contained"
                         endIcon={<PersonIcon/>}
-                        onClick={()=> {
-                            if(this.state.user!=='[Usuario]' && this.state.password !== '[Contraseña]'){
-                                if(this.state.showing === false){ //esta vara
-                                    this.setState({showing: !this.state.showing})
-                                }
-                                /*try {
+                        onClick={() => {
+                            if (this.state.user !== '[Usuario]' && this.state.password !== '[Contraseña]') {
+
+                                try {
                                     var httpResult = axios({
                                         method: "GET",
-                                        url: `http://localhost/admin/login?user=` + this.state.user + '&password='
-                                                + this.state.password
+                                        url: `http://localhost:8080/railspot-1.0/admin/login?user=` + this.state.user + '&password='
+                                            + this.state.password
                                     });
                                     httpResult
                                         .then((response) => {
-                                            console.log(response); //esa vara va aqui
+                                            console.log(response.status)
+                                            if ((this.state.showing === false) && (response.status === 202)) {
+                                                this.setState({showing: !this.state.showing})
+                                            }
                                         })
                                         .catch((error) => {
-                                            console.log(error);
+                                            alert("Credenciales invalidaas.")
                                         });
                                 } catch (error) {
+                                    console.log("me mamé doblemente lol")
                                     console.log(error);
-                                }*/
+                                }
+
                             } else {
                                 alert('Digite un usuario y/o contraseña válido')
                             }
@@ -109,9 +113,9 @@ class AdminLogIn extends Component{
                 <br/>
                 <Divider variant={'middle'}/>
                 <Divider variant={'middle'}/>
-                <RutesEdition showing = {this.state.showing}/>
-                <StationsEdition showing = {this.state.showing}/>
-                <ConsultTickets showing = {this.state.showing}/>
+                <RutesEdition showing={this.state.showing}/>
+                <StationsEdition showing={this.state.showing}/>
+                <ConsultTickets showing={this.state.showing}/>
             </div>
         );
     }

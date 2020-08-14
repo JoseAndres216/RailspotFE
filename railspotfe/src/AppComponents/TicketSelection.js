@@ -97,7 +97,7 @@ class TicketSelection extends Component{
                 <Divider variant={'middle'}/>
                 <Divider variant={'middle'}/>
                 <br/>
-                <text className={'Text'}>Seleccion de ruta</text>
+                <text className={'Text'}>Selección de ruta</text>
                 <br/><br/>
                 <TextField
                     color={'primary'}
