@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import './RutesEdition.css'
+import axios from "axios";
 
 import Divider from "@material-ui/core/Divider";
 import Select from "@material-ui/core/Select";
@@ -101,7 +102,24 @@ class RutesEdition extends Component{
                                     if(this.state.station1 !== this.state.station2){
                                         try{
                                             if(this.state.price > 0){
-
+                                                try{
+                                                    var httpResult = axios({
+                                                        method: "PUT",
+                                                        url: 'http://localhost:8080/railspot-1.0/admin/route?start='
+                                                                + this.state.station1 + '&end=' + this.state.station2 +
+                                                                '&km=' + this.state.distance
+                                                    });
+                                                    httpResult
+                                                        .then((response) => {
+                                                            console.log(response.status)
+                                                            alert('Ruta agregada con éxito!')
+                                                        })
+                                                        .catch((error) => {
+                                                            alert("No fue posible agregar la ruta")
+                                                        });
+                                                } catch (error) {
+                                                    console.log("La tearea falló con éxito: " + error)
+                                                }
                                             } else {
                                                 alert('Digite un precio válido')
                                             }
@@ -125,7 +143,23 @@ class RutesEdition extends Component{
                             onClick={()=>{
                                 if(this.state.station1 !== '[estacion 1]' || this.state.station2 !== '[estacion 1]'){
                                     if(this.state.station1 !== this.state.station2){
-
+                                        try{
+                                            var httpResult = axios({
+                                                method: "DELETE",
+                                                url: 'http://localhost:8080/railspot-1.0/admin/route?start='
+                                                    + this.state.station1 + '&end=' + this.state.station2
+                                            });
+                                            httpResult
+                                                .then((response) => {
+                                                    console.log(response.status)
+                                                    alert('Ruta eliminada con éxito!')
+                                                })
+                                                .catch((error) => {
+                                                    alert("No fue posible eliminar la ruta")
+                                                });
+                                        } catch (error) {
+                                            console.log("La tearea falló con éxito: " + error)
+                                        }
                                     } else{
                                         alert('Digite dos estaciones diferentes')
                                     }

@@ -81,7 +81,6 @@ class AdminLogIn extends Component {
                         endIcon={<PersonIcon/>}
                         onClick={() => {
                             if (this.state.user !== '[Usuario]' && this.state.password !== '[Contraseña]') {
-
                                 try {
                                     var httpResult = axios({
                                         method: "GET",
@@ -96,7 +95,7 @@ class AdminLogIn extends Component {
                                             }
                                         })
                                         .catch((error) => {
-                                            alert("Credenciales invalidaas.")
+                                            alert("Credenciales inválidas")
                                         });
                                 } catch (error) {
                                     console.log("me mamé doblemente lol")

@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import './StationsEdition.css'
+import axios from "axios";
 
 import Divider from "@material-ui/core/Divider";
 import TextField from "@material-ui/core/TextField";
@@ -92,7 +93,23 @@ class StationsEdition extends Component{
                                 if(this.state.name !== '[Station name]' && this.state.name !== ''){
                                     try{
                                         if(this.state.x >= 0 && this.state.y >= 0){
-
+                                            try{
+                                                var httpResult = axios({
+                                                    method: "PUT",
+                                                    url: 'http://localhost:8080/railspot-1.0/admin/station?value='+
+                                                    this.state.name
+                                                });
+                                                httpResult
+                                                    .then((response) => {
+                                                        console.log(response.status)
+                                                        alert('Estación agregada con éxito!')
+                                                    })
+                                                    .catch((error) => {
+                                                        alert("No fue posible agregar la estación")
+                                                    });
+                                            } catch (error) {
+                                                console.log("La tearea falló con éxito: " + error)
+                                            }
                                         } else {
                                             alert('Digite unas coordenadas válidas')
                                         }
@@ -112,7 +129,23 @@ class StationsEdition extends Component{
                             startIcon={<HighlightOffIcon/>}
                             onClick={()=>{
                                 if(this.state.name !== '[Station name]' && this.state.name !== ''){
-
+                                    try{
+                                        var httpResult = axios({
+                                            method: "DELETE",
+                                            url: 'http://localhost:8080/railspot-1.0/admin/station?value='+
+                                                this.state.name
+                                        });
+                                        httpResult
+                                            .then((response) => {
+                                                console.log(response.status)
+                                                alert('Estación eliminada con éxito!')
+                                            })
+                                            .catch((error) => {
+                                                alert("No fue posible eliminar la estación")
+                                            });
+                                    } catch (error) {
+                                        console.log("La tearea falló con éxito: " + error)
+                                    }
                                 } else {
                                     alert('Digite una estacion válida')
                                 }
