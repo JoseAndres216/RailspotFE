@@ -17,8 +17,8 @@ class RutesEdition extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            station1: '[estacion 1]',
-            station2: '[estacion 2]',
+            station1: 'Alajuela',
+            station2: 'San Jose',
             distance: 0
         };
     }
@@ -101,7 +101,7 @@ class RutesEdition extends Component{
                                 if(this.state.station1 !== '[estacion 1]' || this.state.station2 !== '[estacion 1]'){
                                     if(this.state.station1 !== this.state.station2){
                                         try{
-                                            if(this.state.price > 0){
+                                            if(this.state.distance > 0){
                                                 try{
                                                     var httpResult = axios({
                                                         method: "PUT",
@@ -124,7 +124,7 @@ class RutesEdition extends Component{
                                                 alert('Digite un precio válido')
                                             }
                                         } catch {
-                                            alert('Digite un precio válido')
+                                            alert('Digite una distancia válida.')
                                         }
                                     } else{
                                         alert('Digite dos estaciones diferentes')
