@@ -13,12 +13,12 @@ import TextField from "@material-ui/core/TextField";
 /*
 Class for the rutes editor subcomponent
  */
-class RutesEdition extends Component{
+class RutesEdition extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            station1: 'Alajuela',
-            station2: 'San Jose',
+            station1: '[estacion 1]',
+            station2: '[estacion 2]',
             distance: 0
         };
     }
@@ -51,8 +51,8 @@ class RutesEdition extends Component{
     Method for "drawing" all the class components
     */
     render() {
-        if(this.props.showing){
-            return(
+        if (this.props.showing) {
+            return (
                 <div>
                     <br/>
                     <text className={'Text'}>Edicion de rutas</text>
@@ -97,17 +97,17 @@ class RutesEdition extends Component{
                             color={'primary'}
                             variant="contained"
                             startIcon={<AddCircleOutlineIcon/>}
-                            onClick={()=>{
-                                if(this.state.station1 !== '[estacion 1]' || this.state.station2 !== '[estacion 1]'){
-                                    if(this.state.station1 !== this.state.station2){
-                                        try{
-                                            if(this.state.distance > 0){
-                                                try{
+                            onClick={() => {
+                                if (this.state.station1 !== '[estacion 1]' && this.state.station2 !== '[estacion 2]') {
+                                    if (this.state.station1 !== this.state.station2) {
+                                        try {
+                                            if (this.state.distance > 0) {
+                                                try {
                                                     var httpResult = axios({
                                                         method: "PUT",
                                                         url: 'http://localhost:8080/railspot-1.0/admin/route?start='
-                                                                + this.state.station1 + '&end=' + this.state.station2 +
-                                                                '&km=' + this.state.distance
+                                                            + this.state.station1 + '&end=' + this.state.station2 +
+                                                            '&km=' + this.state.distance
                                                     });
                                                     httpResult
                                                         .then((response) => {
@@ -126,7 +126,7 @@ class RutesEdition extends Component{
                                         } catch {
                                             alert('Digite una distancia válida.')
                                         }
-                                    } else{
+                                    } else {
                                         alert('Digite dos estaciones diferentes')
                                     }
                                 } else {
@@ -140,10 +140,10 @@ class RutesEdition extends Component{
                             color={'secondary'}
                             variant="contained"
                             startIcon={<HighlightOffIcon/>}
-                            onClick={()=>{
-                                if(this.state.station1 !== '[estacion 1]' || this.state.station2 !== '[estacion 1]'){
-                                    if(this.state.station1 !== this.state.station2){
-                                        try{
+                            onClick={() => {
+                                if (this.state.station1 !== '[estacion 1]' && this.state.station2 !== '[estacion 2]') {
+                                    if (this.state.station1 !== this.state.station2) {
+                                        try {
                                             var httpResult = axios({
                                                 method: "DELETE",
                                                 url: 'http://localhost:8080/railspot-1.0/admin/route?start='
@@ -160,7 +160,7 @@ class RutesEdition extends Component{
                                         } catch (error) {
                                             console.log("La tearea falló con éxito: " + error)
                                         }
-                                    } else{
+                                    } else {
                                         alert('Digite dos estaciones diferentes')
                                     }
                                 } else {
@@ -175,7 +175,7 @@ class RutesEdition extends Component{
                     <Divider variant={'middle'}/>
                 </div>
             );
-        }else{
+        } else {
             return (
                 <div>
                 </div>
