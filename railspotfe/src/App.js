@@ -17,11 +17,11 @@ class App extends Component{
   render(){
     return(
       <div className={'Background'}>
-        <img src={logoL} align={'top'}/>
+        <img src={logoL} align={'top'} alt={logoL}/>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
           <text className={'Headers'}>Railspot</text>
           &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <img src={logoR} align={'top'}/>
+        <img src={logoR} align={'top'} alt={logoR}/>
         <br/><br/>
         <TicketSelection/>
         <AdminLogIn/>
