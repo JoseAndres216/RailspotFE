@@ -1,5 +1,6 @@
 import React, {Component} from "react";
 import './TicketInformation.css'
+import TicketBill from "./TicketBill";
 
 import Divider from "@material-ui/core/Divider";
 import CardContent from "@material-ui/core/CardContent";
@@ -7,7 +8,6 @@ import Typography from "@material-ui/core/Typography";
 import Card from "@material-ui/core/Card";
 import Button from "@material-ui/core/Button";
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import TicketBill from "./TicketBill";
 
 /*
 Class for the ticket information subcomponent

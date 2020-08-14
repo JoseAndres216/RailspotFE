@@ -114,7 +114,7 @@ class RutesEdition extends Component {
                                                             console.log(response.status)
                                                             alert('Ruta agregada con éxito!')
                                                         })
-                                                        .catch((error) => {
+                                                        .catch(() => {
                                                             alert("No fue posible agregar la ruta")
                                                         });
                                                 } catch (error) {
@@ -154,7 +154,7 @@ class RutesEdition extends Component {
                                                     console.log(response.status)
                                                     alert('Ruta eliminada con éxito!')
                                                 })
-                                                .catch((error) => {
+                                                .catch(() => {
                                                     alert("No fue posible eliminar la ruta")
                                                 });
                                         } catch (error) {

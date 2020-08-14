@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import TicketInformation from "./TicketInformation";
 import './TicketSelection.css'
+import TicketInformation from "./TicketInformation";
 
 import Divider from "@material-ui/core/Divider";
 import Select from "@material-ui/core/Select";

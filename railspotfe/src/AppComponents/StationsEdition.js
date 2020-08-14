@@ -104,7 +104,7 @@ class StationsEdition extends Component{
                                                         console.log(response.status)
                                                         alert('Estación agregada con éxito!')
                                                     })
-                                                    .catch((error) => {
+                                                    .catch(() => {
                                                         alert("No fue posible agregar la estación")
                                                     });
                                             } catch (error) {
@@ -140,7 +140,7 @@ class StationsEdition extends Component{
                                                 console.log(response.status)
                                                 alert('Estación eliminada con éxito!')
                                             })
-                                            .catch((error) => {
+                                            .catch(() => {
                                                 alert("No fue posible eliminar la estación")
                                             });
                                     } catch (error) {
