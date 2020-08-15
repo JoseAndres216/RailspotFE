@@ -139,16 +139,16 @@ class StationsEdition extends Component {
                                             .then((response) => {
 
                                                 console.log(response.status)
-                                                alert('Estación eliminada con éxito.')
+                                                alert('Estación eliminada con éxito!')
                                             })
                                             .catch(() => {
-                                                alert("No fue posible eliminar la estación ya uqe posee tiquetes activos.")
+                                                alert("No fue posible eliminar la estación ya uqe posee tiquetes activos")
                                             });
                                     } catch (error) {
                                         console.log("La tearea falló con éxito: " + error)
                                     }
                                 } else {
-                                    alert('Digite una estacion válida.')
+                                    alert('Digite una estacion válida')
                                 }
                             }}>
                             Eliminar estación
