@@ -230,6 +230,10 @@ class ConsultTickets extends Component {
                                             if (this.state.option === 'id') {
                                                 if (this.state.id !== '[id]') {
                                                     this.loadresultsID()
+                                                    if(this.state.tickets.length === 0){
+                                                        alert('No se encontraron tiquetes que coincidan con la busqueda ' +
+                                                            'realizada')
+                                                    }
                                                 } else {
                                                     alert('Digite un ID válida')
                                                 }
@@ -250,9 +254,6 @@ class ConsultTickets extends Component {
                                 Realizar consulta
                             </Button>
                             <br/><br/>
-                            <table>
-
-                            </table>
                         </div>
                     </div>
                     <br/>
