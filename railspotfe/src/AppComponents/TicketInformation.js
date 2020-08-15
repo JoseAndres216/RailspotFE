@@ -54,9 +54,6 @@ class TicketInformation extends Component{
                             variant="contained"
                             endIcon={<ShoppingCartIcon/>}
                             onClick={()=>{
-                                if(this.state.show === false){
-                                    this.setState({show: !this.state.show})
-                                }
                                 try {
                                     var httpResult = axios({
                                         method: "POST",
@@ -68,6 +65,9 @@ class TicketInformation extends Component{
                                         .then((response) => {
                                             console.log(response.status)
                                             alert('Tiquete comprado!')
+                                            if(this.state.show === false){
+                                                this.setState({show: !this.state.show})
+                                            }
                                         })
                                         .catch(() => {
                                             alert("No fue posible comprar el tiquete")

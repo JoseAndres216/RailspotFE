@@ -208,9 +208,6 @@ class TicketSelection extends Component {
                                             if (this.state.date !== '[Date]' || this.state.tvdCertification) {
                                                 try {
                                                     if (this.state.quantity > 0) {
-                                                        if (this.state.show === false) {
-                                                            this.setState({show: !this.state.show})
-                                                        }
                                                         if (this.state.tvdCertification) {
                                                             this.setState({
                                                                 date: 'Fecha con certificación TVD'
@@ -235,6 +232,9 @@ class TicketSelection extends Component {
                                                                     });
                                                                     console.log('Tiquete reservado, por favor confirme' +
                                                                         'su compra');
+                                                                    if (this.state.show === false) {
+                                                                        this.setState({show: !this.state.show})
+                                                                    }
                                                                 })
                                                                 .catch((error) => {
                                                                     console.log('No fue posible reservar el tiquete');
