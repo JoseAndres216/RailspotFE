@@ -237,10 +237,10 @@ class TicketSelection extends Component {
                                                                     }
                                                                 })
                                                                 .catch((error) => {
-                                                                    console.log('No fue posible reservar el tiquete');
+                                                                    alert('No fue posible reservar el tiquete');
                                                                 });
                                                         } catch (error) {
-                                                            console.log("La tearea falló con éxito: " + error);
+                                                            alert("La tearea falló con éxito: " + error);
                                                         }
                                                     } else {
                                                         alert('Digite una cantidad de tiquetes válida')

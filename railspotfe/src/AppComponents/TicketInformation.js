@@ -73,7 +73,7 @@ class TicketInformation extends Component{
                                             alert("No fue posible comprar el tiquete")
                                         });
                                 } catch (error) {
-                                    console.log("La tearea falló con éxito: " + error)
+                                    alert("La tearea falló con éxito: " + error)
                                 }
                             }}>
                             Realizar Compra
