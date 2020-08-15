@@ -134,7 +134,7 @@ class RutesEdition extends Component {
                                                     });
                                                     httpResult
                                                         .then((response) => {
-                                                            this.loadStations()
+                                                            alert('Ruta agregada con éxito!')
                                                         })
                                                         .catch(() => {
                                                             alert("No fue posible agregar la ruta")
@@ -177,7 +177,6 @@ class RutesEdition extends Component {
                                                         alert(response.data)
                                                     } else {
                                                         alert('Ruta eliminada con éxito!')
-                                                        this.loadStations()
                                                     }
                                                 })
                                                 .catch(() => {
