@@ -55,10 +55,10 @@ class TicketBill extends Component{
                                 + this.props.price}
                                 <br />
                                 {'Descuento aplicado: ................................................................ c'
-                                + this.state.discount}
+                                + ((this.props.price * this.props.quantity) *(0.02*this.props.quantity))}
                                 <br />
                                 {'Costo total: .............................................................................. c'
-                                + ((this.props.price * this.props.quantity) - this.state.discount)}
+                                + ((this.props.price * this.props.quantity) - ((this.props.price * this.props.quantity) *(0.02*this.props.quantity)))}
                                 <br /><br />
                                 {'Gracias por preferirnos!'}
                                 <br /><br />

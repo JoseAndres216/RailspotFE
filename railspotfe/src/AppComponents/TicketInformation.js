@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import './TicketInformation.css'
 import TicketBill from "./TicketBill";
+import axios from "axios";
+
 
 import Divider from "@material-ui/core/Divider";
 import CardContent from "@material-ui/core/CardContent";
@@ -16,8 +18,6 @@ class TicketInformation extends Component{
     constructor(props) {
         super(props);
         this.state = {
-            price: 0.0,
-            troughStations: [],
             show: false
         };
     }
@@ -44,7 +44,7 @@ class TicketInformation extends Component{
                                     <br />
                                     {'Se comprarán ' + this.props.quantity + ' tiquetes para el viaje, reservados para el día: ' + this.props.date}
                                     <br />
-                                    {'Y cada uno tendrá un costo de ' + this.state.price + ' colones' }
+                                    {'Y cada uno tendrá un costo de ' + this.props.price + ' colones' }
                                 </Typography>
                             </CardContent>
                         </Card>
@@ -57,6 +57,24 @@ class TicketInformation extends Component{
                                 if(this.state.show === false){
                                     this.setState({show: !this.state.show})
                                 }
+                                try {
+                                    var httpResult = axios({
+                                        method: "POST",
+                                        url: 'http://localhost:8080/railspot-1.0/routes/buy?start=' + this.props.station1
+                                            + '&end='+ this.props.station2 + '&cant=' + this.props.quantity +'&date=' +
+                                            this.props.date + '&id=' + this.props.id
+                                    });
+                                    httpResult
+                                        .then((response) => {
+                                            console.log(response.status)
+                                            alert('Tiquete comprado!')
+                                        })
+                                        .catch(() => {
+                                            alert("No fue posible comprar el tiquete")
+                                        });
+                                } catch (error) {
+                                    console.log("La tearea falló con éxito: " + error)
+                                }
                             }}>
                             Realizar Compra
                         </Button>
@@ -67,7 +85,7 @@ class TicketInformation extends Component{
                     <Divider variant={'middle'}/>
                     <TicketBill station1 = {this.props.station1} station2 = {this.props.station2} show = {this.state.show}
                                 quantity = {this.props.quantity} date = {this.props.date} id = {this.props.id}
-                                price = {this.state.price} troughStations = {this.state.troughStations}/>
+                                price = {this.props.price} troughStations = {this.state.troughStations}/>
                 </div>
             );
         }else{

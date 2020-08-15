@@ -152,7 +152,14 @@ class RutesEdition extends Component {
                                             httpResult
                                                 .then((response) => {
                                                     console.log(response.status)
-                                                    alert('Ruta eliminada con éxito!')
+                                                    if (response.status !== 202) {
+                                                        alert(response.data)
+
+                                                    } else {
+
+                                                        alert('Ruta eliminada con éxito!')
+                                                    }
+
                                                 })
                                                 .catch(() => {
                                                     alert("No fue posible eliminar la ruta")

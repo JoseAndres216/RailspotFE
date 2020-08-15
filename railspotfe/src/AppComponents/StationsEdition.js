@@ -11,7 +11,7 @@ import HighlightOffIcon from '@material-ui/icons/HighlightOff';
 /*
 Class for the stations editor subcomponent
  */
-class StationsEdition extends Component{
+class StationsEdition extends Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -49,8 +49,8 @@ class StationsEdition extends Component{
     Method for "drawing" all the class components
     */
     render() {
-        if(this.props.showing){
-            return(
+        if (this.props.showing) {
+            return (
                 <div>
                     <br/>
                     <text className={'Text'}>Edición de estaciones</text>
@@ -89,15 +89,15 @@ class StationsEdition extends Component{
                             color={"primary"}
                             variant="contained"
                             startIcon={<AddCircleOutlineIcon/>}
-                            onClick={()=>{
-                                if(this.state.name !== '[Station name]' && this.state.name !== ''){
-                                    try{
-                                        if(this.state.x >= 0 && this.state.y >= 0){
-                                            try{
+                            onClick={() => {
+                                if (this.state.name !== '[Station name]' && this.state.name !== '') {
+                                    try {
+                                        if (this.state.x >= 0 && this.state.y >= 0) {
+                                            try {
                                                 var httpResult = axios({
                                                     method: "PUT",
-                                                    url: 'http://localhost:8080/railspot-1.0/admin/station?value='+
-                                                    this.state.name
+                                                    url: 'http://localhost:8080/railspot-1.0/admin/station?value=' +
+                                                        this.state.name
                                                 });
                                                 httpResult
                                                     .then((response) => {
@@ -127,27 +127,28 @@ class StationsEdition extends Component{
                             color={'secondary'}
                             variant="contained"
                             startIcon={<HighlightOffIcon/>}
-                            onClick={()=>{
-                                if(this.state.name !== '[Station name]' && this.state.name !== ''){
-                                    try{
+                            onClick={() => {
+                                if (this.state.name !== '[Station name]' && this.state.name !== '') {
+                                    try {
                                         var httpResult = axios({
                                             method: "DELETE",
-                                            url: 'http://localhost:8080/railspot-1.0/admin/station?value='+
+                                            url: 'http://localhost:8080/railspot-1.0/admin/station?value=' +
                                                 this.state.name
                                         });
                                         httpResult
                                             .then((response) => {
+
                                                 console.log(response.status)
-                                                alert('Estación eliminada con éxito!')
+                                                alert('Estación eliminada con éxito.')
                                             })
                                             .catch(() => {
-                                                alert("No fue posible eliminar la estación")
+                                                alert("No fue posible eliminar la estación, tiene tiquetes activos.")
                                             });
                                     } catch (error) {
                                         console.log("La tearea falló con éxito: " + error)
                                     }
                                 } else {
-                                    alert('Digite una estacion válida')
+                                    alert('Digite una estacion válida.')
                                 }
                             }}>
                             Eliminar estación
@@ -158,7 +159,7 @@ class StationsEdition extends Component{
                     <Divider variant={'middle'}/>
                 </div>
             );
-        }else{
+        } else {
             return (
                 <div>
                 </div>
