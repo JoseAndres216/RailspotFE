@@ -18,15 +18,15 @@ import TableBody from "@material-ui/core/TableBody";
 /*
 Class for the tickets consults subcomponent
  */
-class ConsultTickets extends Component{
+class ConsultTickets extends Component {
     constructor(props) {
         super(props);
         this.loadStations()
         this.state = {
             tickets: [],
             stations: [],
-            option : '[opcion]',
-            station : '[estacion]',
+            option: '[opcion]',
+            station: '[estacion]',
             id: '[id]',
             date: '[fecha]'
         }
@@ -79,7 +79,6 @@ class ConsultTickets extends Component{
                     this.setState({
                         stations: response.data,
                     });
-                    alert('Error a lo hora de cargar las estaciones');
                 })
                 .catch(() => {
                     alert('Error a lo hora de cargar las estaciones');
@@ -89,7 +88,10 @@ class ConsultTickets extends Component{
         }
     }
 
-    loadresultsID(){
+    loadresultsID() {
+        this.setState({
+            tickets: []
+        })
         try {
             var httpResult = axios({
                 method: "GET",
@@ -115,7 +117,10 @@ class ConsultTickets extends Component{
         }
     }
 
-    loadresultsDATE(){
+    loadresultsDATE() {
+        this.setState({
+            tickets: []
+        })
         try {
             var httpResult = axios({
                 method: "GET",
@@ -141,7 +146,10 @@ class ConsultTickets extends Component{
         }
     }
 
-    loadresultsSTATION(){
+    loadresultsSTATION() {
+        this.setState({
+            tickets: []
+        })
         try {
             var httpResult = axios({
                 method: "GET",
@@ -171,8 +179,8 @@ class ConsultTickets extends Component{
     Method for "drawing" all the class components
     */
     render() {
-        if(this.props.showing){
-            return(
+        if (this.props.showing) {
+            return (
                 <div>
                     <br/>
                     <text className={'Text'}>Consultas</text>
@@ -211,7 +219,7 @@ class ConsultTickets extends Component{
                             <Select onChange={this.stationChanged}
                                     value={this.state.station}>
                                 <MenuItem value={'[estacion]'}><em>Seleccione una estacion</em></MenuItem>
-                                {this.state.stations.map(element =>(
+                                {this.state.stations.map(element => (
                                     <MenuItem value={element}>{element}</MenuItem>
                                 ))}
                             </Select>
@@ -221,31 +229,25 @@ class ConsultTickets extends Component{
                             <Button
                                 color={"primary"}
                                 variant="contained"
-                                onClick={()=>{
-                                    if(this.state.option !== '[opcion]'){
-                                        if(this.state.option === 'fecha'){
-                                            if(this.state.date !== '[fecha]'){
-                                                if(this.state.option === 'id'){
-                                                    this.loadresultsID()
-                                                } else if(this.state.option === 'date'){
-                                                    this.loadresultsDATE()
-                                                } else{
-                                                    this.loadresultsSTATION()
-                                                }
+                                onClick={() => {
+                                    if (this.state.option !== '[opcion]') {
+                                        if (this.state.option === 'fecha') {
+                                            if (this.state.date !== '[fecha]') {
+                                                this.loadresultsDATE()
                                             } else {
                                                 alert('Digite una fecha válida')
                                             }
                                         } else {
-                                            if(this.state.option === 'id'){
-                                                if(this.state.id !== '[id]'){
-
+                                            if (this.state.option === 'id') {
+                                                if (this.state.id !== '[id]') {
+                                                    this.loadresultsID()
                                                 } else {
                                                     alert('Digite un ID válida')
                                                 }
                                             } else {
-                                                if(this.state.option === 'estacion') {
-                                                    if(this.state.station !== '[estacion]') {
-
+                                                if (this.state.option === 'estacion') {
+                                                    if (this.state.station !== '[estacion]') {
+                                                        this.loadresultsSTATION()
                                                     } else {
                                                         alert('Digite una estacion válida')
                                                     }
@@ -258,15 +260,15 @@ class ConsultTickets extends Component{
                                 }}>
                                 Realizar consulta
                             </Button>
-                            <br /><br />
+                            <br/><br/>
                             <table>
 
                             </table>
                         </div>
                     </div>
-                    <br />
+                    <br/>
                     <text>Resultados de la búsqueda:</text>
-                    <br />
+                    <br/>  <br/>
                     <TableContainer component={Paper}>
                         <Table aria-label="simple table">
                             <TableHead>
@@ -285,12 +287,12 @@ class ConsultTickets extends Component{
                             </TableBody>
                         </Table>
                     </TableContainer>
-                    <br />
+                    <br/>
                     <Divider variant={'middle'}/>
                     <Divider variant={'middle'}/>
                 </div>
             );
-        }else{
+        } else {
             return (
                 <div>
                 </div>

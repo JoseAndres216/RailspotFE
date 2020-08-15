@@ -12,7 +12,7 @@ import ConfirmationNumberIcon from '@material-ui/icons/ConfirmationNumber';
 /*
 Class for the ticket bill subcomponent
  */
-class TicketBill extends Component{
+class TicketBill extends Component {
     constructor(props) {
         super(props);
         this.calcDiscount()
@@ -21,14 +21,14 @@ class TicketBill extends Component{
         };
     }
 
-    calcDiscount(){
-        if(this.props.quantity > 1 && this.props.quantity <= 46){
+    calcDiscount() {
+        if (this.props.quantity > 1 && this.props.quantity <= 46) {
             this.setState({
-                discount: ((this.props.price * this.props.quantity) * (0.02*this.props.quantity))
+                discount: ((this.props.price * this.props.quantity) * (0.02 * this.props.quantity))
             })
-        } else if(this.props.quantity > 46){
+        } else if (this.props.quantity > 46) {
             this.setState({
-                discount: ((this.props.price * this.props.quantity) * (0.02*46))
+                discount: ((this.props.price * this.props.quantity) * (0.02 * 46))
             })
         }
     }
@@ -37,8 +37,8 @@ class TicketBill extends Component{
     Method for "drawing" all the class components
     */
     render() {
-        if(this.props.show){
-            return(
+        if (this.props.show) {
+            return (
                 <div>
                     <br/>
                     <text className={'Text'}>Factura de compra</text>
@@ -47,26 +47,26 @@ class TicketBill extends Component{
                         <CardContent>
                             <Typography align='center' variant='h6' color="textSecondary">
                                 {'Railspot Costa Rica'}
-                                <br />
-                                {'Factura N° ' + Math.floor(Math.random()*(1000000-1+1)+1)}
-                                <br />
+                                <br/>
+                                {'Factura N° ' + Math.floor(Math.random() * (1000000 - 1 + 1) + 1)}
+                                <br/>
                                 {'Fecha: ' + new Date().getDate() + '/' + new Date().getMonth() + '/' + new Date().getFullYear()}
-                                <br />
+                                <br/>
                                 {'Hora: ' + new Date().getHours() + ':' + new Date().getMinutes()}
-                                <br />
+                                <br/>
                                 {'Cliente: ' + this.props.id}
-                                <br /><br />
+                                <br/><br/>
                                 {'Inicio del viaje: ' + this.props.station1}
-                                <br />
+                                <br/>
                                 {'Final del viaje: ' + this.props.station2}
-                                <br />
+                                <br/>
                                 {'Tiquete(s) reservado(s) para el dia: ' + this.props.date}
-                                <br />
+                                <br/>
                                 {'Total de tiquetes reservados: ' + this.props.quantity}
-                                <br /><br />
+                                <br/><br/>
                                 {'Costo por tiquete: .................................................................... c'
                                 + this.props.price}
-                                <br />
+                                <br/>
                                 {'Descuento aplicado: ................................................................ c'
                                 + this.state.discount}
                                 <br /> {this.calcDiscount()}
@@ -74,17 +74,19 @@ class TicketBill extends Component{
                                 + ((this.props.price * this.props.quantity) - this.state.discount)}
                                 <br /><br />
                                 {'Gracias por preferirnos!'}
-                                <br /><br />
+                                <br/><br/>
                             </Typography>
                             <Typography align='center' variant='subtitle2' color='textSecondary'>
-                                Railspot CR se reserva el derecho de admision y no se hace cargo de objetos extraviados por los clientes
-                                <br />
-                                Los tiquetes comprados en una fecha seran admitidos en fechas distintas en caso de contar con la certificacion correspondiente
-                                <br /><br />
+                                Railspot CR se reserva el derecho de admision y no se hace cargo de objetos extraviados
+                                por los clientes
+                                <br/>
+                                Los tiquetes comprados en una fecha seran admitidos en fechas distintas en caso de
+                                contar con la certificacion correspondiente
+                                <br/><br/>
                             </Typography>
                             <Typography align='center' variant='caption' color='textSecondary'>
                                 Que le cuesta ponernos un 100? ☹
-                                <br />
+                                <br/>
                                 No es mucho pero es un trabajo honesto
                             </Typography>
                         </CardContent>
@@ -94,7 +96,9 @@ class TicketBill extends Component{
                         color={'primary'}
                         variant="contained"
                         endIcon={<ConfirmationNumberIcon/>}
-                        onClick={() => {window.location.reload()}}>
+                        onClick={() => {
+                            window.location.reload()
+                        }}>
                         Comprar más tiquetes
                     </Button>
                     <br/>
@@ -103,8 +107,8 @@ class TicketBill extends Component{
                     <Divider variant={'middle'}/>
                 </div>
             );
-        }else{
-            return(
+        } else {
+            return (
                 <div>
 
                 </div>
