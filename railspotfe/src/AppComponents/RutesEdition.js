@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import './RutesEdition.css'
 import axios from "axios";
+import Rutes from "../Resources/Rutes.png";
 
 import Divider from "@material-ui/core/Divider";
 import Select from "@material-ui/core/Select";
@@ -79,6 +80,8 @@ class RutesEdition extends Component {
                 <div>
                     <br/>
                     <text className={'Text'}>Edicion de rutas</text>
+                    <br/><br/>
+                    <img src={Rutes} align={'top'} alt={Rutes} className={'Images'}/>
                     <br/><br/>
                     <div>
                         <Select

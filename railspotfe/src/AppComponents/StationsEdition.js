@@ -1,12 +1,14 @@
 import React, {Component} from "react";
 import './StationsEdition.css'
 import axios from "axios";
+import Rutes from "../Resources/Rutes.png";
 
 import Divider from "@material-ui/core/Divider";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
 import HighlightOffIcon from '@material-ui/icons/HighlightOff';
+
 
 /*
 Class for the stations editor subcomponent
@@ -49,6 +51,8 @@ class StationsEdition extends Component {
                 <div>
                     <br/>
                     <text className={'Text'}>Edición de estaciones</text>
+                    <br/><br/>
+                    <img src={Rutes} align={'top'} alt={Rutes} className={'Images'}/>
                     <br/><br/>
                     <div>
                         <TextField

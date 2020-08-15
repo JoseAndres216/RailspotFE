@@ -10,3 +10,13 @@
   text-align: center;
   padding: 30px;
 }
+
+.Text{
+  font-family: "Copperplate Gothic Light";
+  font-size: larger;
+}
+
+.Images{
+  width: 710px;
+  height: 423px;
+}
