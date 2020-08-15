@@ -61,8 +61,8 @@ class ConsultTickets extends Component{
                 method: "GET",
                 url: 'http://localhost:8080/railspot-1.0/routes/all',
                 headers: {
-                    Accept: "text/plain",
-                    "Content-Type": "text/plain",
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
                 },
             });
             httpResult

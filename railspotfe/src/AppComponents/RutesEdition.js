@@ -55,8 +55,8 @@ class RutesEdition extends Component {
                 method: "GET",
                 url: 'http://localhost:8080/railspot-1.0/routes/all',
                 headers: {
-                    Accept: "text/plain",
-                    "Content-Type": "text/plain",
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
                 },
             });
             httpResult
@@ -141,6 +141,7 @@ class RutesEdition extends Component {
                                                         .then((response) => {
                                                             console.log(response.status)
                                                             alert('Ruta agregada con éxito!')
+                                                            this.loadStations()
                                                         })
                                                         .catch(() => {
                                                             alert("No fue posible agregar la ruta")
@@ -182,12 +183,10 @@ class RutesEdition extends Component {
                                                     console.log(response.status)
                                                     if (response.status !== 202) {
                                                         alert(response.data)
-
                                                     } else {
-
                                                         alert('Ruta eliminada con éxito!')
+                                                        this.loadStations()
                                                     }
-
                                                 })
                                                 .catch(() => {
                                                     alert("No fue posible eliminar la ruta")
