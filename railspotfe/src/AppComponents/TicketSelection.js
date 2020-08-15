@@ -1,6 +1,8 @@
 import React, {Component} from "react";
 import './TicketSelection.css'
 import TicketInformation from "./TicketInformation";
+import axios from "axios";
+
 
 import Divider from "@material-ui/core/Divider";
 import Select from "@material-ui/core/Select";
@@ -23,6 +25,7 @@ class TicketSelection extends Component{
             date: '[Date]',
             quantity: 0,
             tvdCertification: true,
+            price: 0.0,
             show: false
         };
     }
@@ -172,18 +175,43 @@ class TicketSelection extends Component{
                             if(this.state.station1 !== this.state.station2) {
                                 if (this.state.id !== '[id]') {
                                     if (this.state.station1 !== '[estacion 1]') {
-                                        if (this.state.station2 !== '[estacion 2]') {
+                                        if (this.state.station2 !== '[estacion 2]'){
                                             if (this.state.date !== '[Date]' || this.state.tvdCertification) {
                                                 try {
                                                     if (this.state.quantity > 0) {
                                                         if (this.state.show === false) {
                                                             this.setState({show: !this.state.show})
-                                                            if (this.state.tvdCertification) {
-                                                                this.setState({
-                                                                    date: 'Fecha con certificación TVD'
+                                                        }
+                                                        if (this.state.tvdCertification) {
+                                                            this.setState({
+                                                                date: 'Fecha con certificación TVD'
+                                                            })
+                                                        }
+                                                        try {
+                                                            var httpResult = axios({
+                                                                method: "GET",
+                                                                url: 'http://localhost:8080/railspot-1.0/routes/' +
+                                                                    'calc?start=' + this.state.station1 +
+                                                                    '&end=' + this.state.station2,
+                                                                headers: {
+                                                                    Accept: "text/plain",
+                                                                    "Content-Type": "text/plain",
+                                                                },
+                                                            });
+                                                            httpResult
+                                                                .then((response) => {
+                                                                    console.log(response);
+                                                                    this.setState({
+                                                                        price: response.data,
+                                                                    });
+                                                                    console.log('Tiquete reservado, por favor confirme' +
+                                                                                'su compra');
                                                                 })
-                                                            }
-                                                            console.log(this.state.date)
+                                                                .catch((error) => {
+                                                                    console.log('No fue posible reservar el tiquete');
+                                                                });
+                                                        } catch (error) {
+                                                            console.log("La tearea falló con éxito: " + error);
                                                         }
                                                     } else {
                                                         alert('Digite una cantidad de tiquetes válida')
@@ -215,7 +243,8 @@ class TicketSelection extends Component{
                 <Divider variant={'middle'}/>
                 <Divider variant={'middle'}/>
                 <TicketInformation station1 = {this.state.station1} station2 = {this.state.station2} show = {this.state.show}
-                                   quantity = {this.state.quantity} date = {this.state.date} id = {this.state.id}/>
+                                   quantity = {this.state.quantity} date = {this.state.date} id = {this.state.id}
+                                   price = {this.state.price}/>
             </div>
 
         );
