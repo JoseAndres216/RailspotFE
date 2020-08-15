@@ -61,7 +61,6 @@ class RutesEdition extends Component {
                     this.setState({
                         stations: response.data,
                     });
-                    alert('Error a lo hora de cargar las estaciones');
                 })
                 .catch((error) => {
                     alert('Error a lo hora de cargar las estaciones');
