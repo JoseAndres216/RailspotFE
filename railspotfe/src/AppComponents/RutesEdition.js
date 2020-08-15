@@ -16,7 +16,9 @@ Class for the rutes editor subcomponent
 class RutesEdition extends Component {
     constructor(props) {
         super(props);
+        this.loadStations()
         this.state = {
+            stations: [],
             station1: '[estacion 1]',
             station2: '[estacion 2]',
             distance: 0
@@ -47,6 +49,32 @@ class RutesEdition extends Component {
         console.log('El valor de station2 es: ' + this.state.distance)
     };
 
+    loadStations = () => {
+        try {
+            var httpResult = axios({
+                method: "GET",
+                url: 'http://localhost:8080/railspot-1.0/routes/all',
+                headers: {
+                    Accept: "text/plain",
+                    "Content-Type": "text/plain",
+                },
+            });
+            httpResult
+                .then((response) => {
+                    console.log(response);
+                    this.setState({
+                        stations: response.data,
+                    });
+                    console.log('Error a lo hora de cargar las estaciones');
+                })
+                .catch((error) => {
+                    console.log('Error a lo hora de cargar las estaciones');
+                });
+        } catch (error) {
+            console.log("La tearea falló con éxito: " + error);
+        }
+    }
+
     /*
     Method for "drawing" all the class components
     */
@@ -63,9 +91,9 @@ class RutesEdition extends Component {
                             value={this.state.station1}>
 
                             <MenuItem value={'[estacion 1]'}><em>Seleccione una estacion</em></MenuItem>
-                            <MenuItem value={'Estacion ejemplo 1'}>Estacion ejemplo 1</MenuItem>
-                            <MenuItem value={'Estacion ejemplo 2'}>Estacion ejemplo 2</MenuItem>
-                            <MenuItem value={'Estacion ejemplo 3'}>Estacion ejemplo 3</MenuItem>
+                            {this.state.stations.map(element =>(
+                                <MenuItem value={element}>{element}</MenuItem>
+                            ))}
                         </Select>
 
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -75,9 +103,9 @@ class RutesEdition extends Component {
                             value={this.state.station2}>
 
                             <MenuItem value={'[estacion 2]'}><em>Seleccione una estacion</em></MenuItem>
-                            <MenuItem value={'Estacion ejemplo 1'}>Estacion ejemplo 1</MenuItem>
-                            <MenuItem value={'Estacion ejemplo 2'}>Estacion ejemplo 2</MenuItem>
-                            <MenuItem value={'Estacion ejemplo 3'}>Estacion ejemplo 3</MenuItem>
+                            {this.state.stations.map(element =>(
+                                <MenuItem value={element}>{element}</MenuItem>
+                            ))}
                         </Select>
 
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

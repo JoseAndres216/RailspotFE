@@ -6,6 +6,7 @@ import MenuItem from "@material-ui/core/MenuItem";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
+import axios from "axios";
 
 /*
 Class for the tickets consults subcomponent
@@ -13,7 +14,9 @@ Class for the tickets consults subcomponent
 class ConsultTickets extends Component{
     constructor(props) {
         super(props);
+        this.loadStations()
         this.state = {
+            stations: [],
             option : '[opcion]',
             station : '[estacion]',
             id: '[id]',
@@ -51,6 +54,32 @@ class ConsultTickets extends Component{
         })
         console.log('El valor de station es: ' + this.state.date)
     };
+
+    loadStations = () => {
+        try {
+            var httpResult = axios({
+                method: "GET",
+                url: 'http://localhost:8080/railspot-1.0/routes/all',
+                headers: {
+                    Accept: "text/plain",
+                    "Content-Type": "text/plain",
+                },
+            });
+            httpResult
+                .then((response) => {
+                    console.log(response);
+                    this.setState({
+                        stations: response.data,
+                    });
+                    console.log('Error a lo hora de cargar las estaciones');
+                })
+                .catch((error) => {
+                    console.log('Error a lo hora de cargar las estaciones');
+                });
+        } catch (error) {
+            console.log("La tearea falló con éxito: " + error);
+        }
+    }
 
     /*
     Method for "drawing" all the class components
@@ -96,9 +125,9 @@ class ConsultTickets extends Component{
                             <Select onChange={this.stationChanged}
                                     value={this.state.station}>
                                 <MenuItem value={'[estacion]'}><em>Seleccione una estacion</em></MenuItem>
-                                <MenuItem value={'Estacion ejemplo 1'}>Estacion ejemplo 1</MenuItem>
-                                <MenuItem value={'Estacion ejemplo 2'}>Estacion ejemplo 2</MenuItem>
-                                <MenuItem value={'Estacion ejemplo 3'}>Estacion ejemplo 3</MenuItem>
+                                {this.state.stations.map(element =>(
+                                    <MenuItem value={element}>{element}</MenuItem>
+                                ))}
                             </Select>
                         </form>
                         <div>

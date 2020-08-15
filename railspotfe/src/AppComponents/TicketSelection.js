@@ -95,29 +95,29 @@ class TicketSelection extends Component {
     };
 
     loadStations = () => {
-            try {
-                var httpResult = axios({
-                    method: "GET",
-                    url: 'http://localhost:8080/railspot-1.0/routes/all',
-                    headers: {
-                        Accept: "text/plain",
-                        "Content-Type": "text/plain",
-                    },
-                });
-                httpResult
-                    .then((response) => {
-                        console.log(response);
-                        this.setState({
-                            stations: response.data,
-                        });
-                        console.log('Error a lo hora de cargar las estaciones');
-                    })
-                    .catch((error) => {
-                        console.log('Error a lo hora de cargar las estaciones');
+        try {
+            var httpResult = axios({
+                method: "GET",
+                url: 'http://localhost:8080/railspot-1.0/routes/all',
+                headers: {
+                    Accept: "text/plain",
+                    "Content-Type": "text/plain",
+                },
+            });
+            httpResult
+                .then((response) => {
+                    console.log(response);
+                    this.setState({
+                        stations: response.data,
                     });
-            } catch (error) {
-                console.log("La tearea falló con éxito: " + error);
-            }
+                    console.log('Error a lo hora de cargar las estaciones');
+                })
+                .catch((error) => {
+                    console.log('Error a lo hora de cargar las estaciones');
+                });
+        } catch (error) {
+            console.log("La tearea falló con éxito: " + error);
+        }
     }
 
     /*
