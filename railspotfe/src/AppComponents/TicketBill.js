@@ -7,6 +7,7 @@ import CardContent from "@material-ui/core/CardContent";
 import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import ConfirmationNumberIcon from '@material-ui/icons/ConfirmationNumber';
+import axios from "axios";
 
 
 /*
@@ -21,15 +22,29 @@ class TicketBill extends Component {
         };
     }
 
-    calcDiscount() {
-        if (this.props.quantity > 1 && this.props.quantity <= 46) {
-            this.setState({
-                discount: ((this.props.price * this.props.quantity) * (0.02 * this.props.quantity))
-            })
-        } else if (this.props.quantity > 46) {
-            this.setState({
-                discount: ((this.props.price * this.props.quantity) * (0.02 * 46))
-            })
+    calcDiscount = () => {
+        try {
+            var httpResult = axios({
+                method: "GET",
+                url: 'http://localhost:8080/railspot-1.0/admin/percentage?num=' + this.props.quantity + '&price=' +
+                        this.props.price,
+                headers: {
+                    Accept: "text/plain",
+                    "Content-Type": "text/plain",
+                },
+            });
+            httpResult
+                .then((response) => {
+                    console.log(response);
+                    this.setState({
+                        discount: response.data,
+                    });
+                })
+                .catch(() => {
+                    alert('Error a lo hora de calcular el descuento');
+                });
+        } catch (error) {
+            alert("La tearea falló con éxito: " + error);
         }
     }
 
