@@ -100,8 +100,8 @@ class TicketSelection extends Component {
                 method: "GET",
                 url: 'http://localhost:8080/railspot-1.0/routes/all',
                 headers: {
-                    Accept: "text/plain",
-                    "Content-Type": "text/plain",
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
                 },
             });
             httpResult
@@ -126,11 +126,6 @@ class TicketSelection extends Component {
     render() {
         return (
             <div>
-                <script>
-                    function loadPage() {
-                    this.loadStations()
-                }
-                </script>
                 <Divider variant={'middle'}/>
                 <Divider variant={'middle'}/>
                 <br/>
@@ -152,7 +147,7 @@ class TicketSelection extends Component {
                         value={this.state.station1}>
 
                         <MenuItem value={'[estacion 1]'}><em>Seleccione una estacion</em></MenuItem>
-                        {this.state.stations.map(element =>(
+                        {this.state.stations.map(element => (
                             <MenuItem value={element}>{element}</MenuItem>
                         ))}
                     </Select>
@@ -163,8 +158,8 @@ class TicketSelection extends Component {
                         onChange={this.station2Changed}
                         value={this.state.station2}>
 
-                        <MenuItem value={'[estacion 1]'}><em>Seleccione una estacion</em></MenuItem>
-                        {this.state.stations.map(element =>(
+                        <MenuItem value={'[estacion 2]'}><em>Seleccione una estacion</em></MenuItem>
+                        {this.state.stations.map(element => (
                             <MenuItem value={element}>{element}</MenuItem>
                         ))}
                     </Select>
