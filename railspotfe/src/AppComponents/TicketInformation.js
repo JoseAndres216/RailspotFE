@@ -85,7 +85,7 @@ class TicketInformation extends Component{
                     <Divider variant={'middle'}/>
                     <TicketBill station1 = {this.props.station1} station2 = {this.props.station2} show = {this.state.show}
                                 quantity = {this.props.quantity} date = {this.props.date} id = {this.props.id}
-                                price = {this.props.price} troughStations = {this.state.troughStations}/>
+                                price = {this.props.price}/>
                 </div>
             );
         }else{

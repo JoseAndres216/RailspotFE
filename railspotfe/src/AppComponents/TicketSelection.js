@@ -230,7 +230,7 @@ class TicketSelection extends Component {
                                                                     this.setState({
                                                                         price: response.data,
                                                                     });
-                                                                    console.log('Tiquete reservado, por favor confirme' +
+                                                                    alert('Tiquete reservado, por favor confirme' +
                                                                         'su compra');
                                                                     if (this.state.show === false) {
                                                                         this.setState({show: !this.state.show})
