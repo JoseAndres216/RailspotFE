@@ -89,6 +89,84 @@ class ConsultTickets extends Component{
         }
     }
 
+    loadresultsID(){
+        try {
+            var httpResult = axios({
+                method: "GET",
+                url: 'http://localhost:8080/railspot-1.0/reservations/byPerson?id=' + this.state.id,
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+            });
+            httpResult
+                .then((response) => {
+                    console.log(response);
+                    this.setState({
+                        tickets: response.data,
+                    });
+                    alert('Los tiquetes fueron cargados exitosamente');
+                })
+                .catch(() => {
+                    alert('Error a lo hora de cargar los tiquetes');
+                });
+        } catch (error) {
+            alert("La tearea falló con éxito: " + error);
+        }
+    }
+
+    loadresultsDATE(){
+        try {
+            var httpResult = axios({
+                method: "GET",
+                url: 'http://localhost:8080/railspot-1.0/reservations/byDate?date=' + this.state.date,
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+            });
+            httpResult
+                .then((response) => {
+                    console.log(response);
+                    this.setState({
+                        tickets: response.data,
+                    });
+                    alert('Los tiquetes fueron cargados exitosamente');
+                })
+                .catch(() => {
+                    alert('Error a lo hora de cargar los tiquetes');
+                });
+        } catch (error) {
+            alert("La tearea falló con éxito: " + error);
+        }
+    }
+
+    loadresultsSTATION(){
+        try {
+            var httpResult = axios({
+                method: "GET",
+                url: 'http://localhost:8080/railspot-1.0/reservations/byStation?name=' + this.state.station,
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+            });
+            httpResult
+                .then((response) => {
+                    console.log(response);
+                    this.setState({
+                        tickets: response.data,
+                    });
+                    alert('Los tiquetes fueron cargados exitosamente');
+                })
+                .catch(() => {
+                    alert('Error a lo hora de cargar los tiquetes');
+                });
+        } catch (error) {
+            alert("La tearea falló con éxito: " + error);
+        }
+    }
+
     /*
     Method for "drawing" all the class components
     */
@@ -147,7 +225,13 @@ class ConsultTickets extends Component{
                                     if(this.state.option !== '[opcion]'){
                                         if(this.state.option === 'fecha'){
                                             if(this.state.date !== '[fecha]'){
-
+                                                if(this.state.option === 'id'){
+                                                    this.loadresultsID()
+                                                } else if(this.state.option === 'date'){
+                                                    this.loadresultsDATE()
+                                                } else{
+                                                    this.loadresultsSTATION()
+                                                }
                                             } else {
                                                 alert('Digite una fecha válida')
                                             }
