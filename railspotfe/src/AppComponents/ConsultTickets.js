@@ -7,6 +7,13 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
 import axios from "axios";
+import TableContainer from "@material-ui/core/TableContainer";
+import Paper from "@material-ui/core/Paper";
+import Table from "@material-ui/core/Table";
+import TableHead from "@material-ui/core/TableHead";
+import TableRow from "@material-ui/core/TableRow";
+import TableCell from "@material-ui/core/TableCell";
+import TableBody from "@material-ui/core/TableBody";
 
 /*
 Class for the tickets consults subcomponent
@@ -16,6 +23,7 @@ class ConsultTickets extends Component{
         super(props);
         this.loadStations()
         this.state = {
+            tickets: [],
             stations: [],
             option : '[opcion]',
             station : '[estacion]',
@@ -71,13 +79,13 @@ class ConsultTickets extends Component{
                     this.setState({
                         stations: response.data,
                     });
-                    console.log('Error a lo hora de cargar las estaciones');
+                    alert('Error a lo hora de cargar las estaciones');
                 })
-                .catch((error) => {
-                    console.log('Error a lo hora de cargar las estaciones');
+                .catch(() => {
+                    alert('Error a lo hora de cargar las estaciones');
                 });
         } catch (error) {
-            console.log("La tearea falló con éxito: " + error);
+            alert("La tearea falló con éxito: " + error);
         }
     }
 
@@ -172,7 +180,28 @@ class ConsultTickets extends Component{
                             </table>
                         </div>
                     </div>
-                    <br/>
+                    <br />
+                    <text>Resultados de la búsqueda:</text>
+                    <br />
+                    <TableContainer component={Paper}>
+                        <Table aria-label="simple table">
+                            <TableHead>
+                                <TableRow>
+                                    <TableCell>Información del tiquete</TableCell>
+                                </TableRow>
+                            </TableHead>
+                            <TableBody>
+                                {this.state.tickets.map((ticket) => (
+                                    <TableRow key={ticket}>
+                                        <TableCell component="th" scope="row">
+                                            {ticket}
+                                        </TableCell>
+                                    </TableRow>
+                                ))}
+                            </TableBody>
+                        </Table>
+                    </TableContainer>
+                    <br />
                     <Divider variant={'middle'}/>
                     <Divider variant={'middle'}/>
                 </div>

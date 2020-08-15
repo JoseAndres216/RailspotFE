@@ -192,7 +192,7 @@ class RutesEdition extends Component {
                                                     alert("No fue posible eliminar la ruta")
                                                 });
                                         } catch (error) {
-                                            console.log("La tearea falló con éxito: " + error)
+                                            alert("La tearea falló con éxito: " + error)
                                         }
                                     } else {
                                         alert('Digite dos estaciones diferentes')
