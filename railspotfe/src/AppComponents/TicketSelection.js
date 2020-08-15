@@ -15,9 +15,10 @@ import ConfirmationNumberIcon from '@material-ui/icons/ConfirmationNumber';
 /*
 Class for the ticket selection subcomponent
  */
-class TicketSelection extends Component{
+class TicketSelection extends Component {
     constructor(props) {
         super(props);
+        this.loadStations()
         this.state = {
             stations: [],
             id: '[id]',
@@ -35,10 +36,11 @@ class TicketSelection extends Component{
     Methods for refreshing dynamically the class states
     */
     station1Changed = (event) => {
+
         this.setState({
             station1: event.target.value
         })
-        if(this.state.station1 === this.state.station2){
+        if (this.state.station1 === this.state.station2) {
             this.setState({
                 show: false
             })
@@ -50,7 +52,7 @@ class TicketSelection extends Component{
         this.setState({
             station2: event.target.value
         })
-        if(this.state.station1 === this.state.station2){
+        if (this.state.station1 === this.state.station2) {
             this.setState({
                 show: false
             })
@@ -84,7 +86,7 @@ class TicketSelection extends Component{
         this.setState({
             tvdCertification: !this.state.tvdCertification,
         })
-        if(this.state.tvdCertification){
+        if (this.state.tvdCertification) {
             this.setState({
                 date: 'Fecha con certificación TVD'
             })
@@ -122,7 +124,7 @@ class TicketSelection extends Component{
     Method for "drawing" all the class components
     */
     render() {
-        return(
+        return (
             <div>
                 <script>
                     function loadPage() {
@@ -143,7 +145,7 @@ class TicketSelection extends Component{
                     variant="outlined"
                     onChange={this.idChanged}
                 />
-                <br /><br />
+                <br/><br/>
                 <div>
                     <Select
                         onChange={this.station1Changed}
@@ -204,10 +206,10 @@ class TicketSelection extends Component{
                         variant="contained"
                         endIcon={<ConfirmationNumberIcon/>}
                         onClick={() => {
-                            if(this.state.station1 !== this.state.station2) {
+                            if (this.state.station1 !== this.state.station2) {
                                 if (this.state.id !== '[id]') {
                                     if (this.state.station1 !== '[estacion 1]') {
-                                        if (this.state.station2 !== '[estacion 2]'){
+                                        if (this.state.station2 !== '[estacion 2]') {
                                             if (this.state.date !== '[Date]' || this.state.tvdCertification) {
                                                 try {
                                                     if (this.state.quantity > 0) {
@@ -237,7 +239,7 @@ class TicketSelection extends Component{
                                                                         price: response.data,
                                                                     });
                                                                     console.log('Tiquete reservado, por favor confirme' +
-                                                                                'su compra');
+                                                                        'su compra');
                                                                 })
                                                                 .catch((error) => {
                                                                     console.log('No fue posible reservar el tiquete');
@@ -274,9 +276,9 @@ class TicketSelection extends Component{
                 <br/>
                 <Divider variant={'middle'}/>
                 <Divider variant={'middle'}/>
-                <TicketInformation station1 = {this.state.station1} station2 = {this.state.station2} show = {this.state.show}
-                                   quantity = {this.state.quantity} date = {this.state.date} id = {this.state.id}
-                                   price = {this.state.price}/>
+                <TicketInformation station1={this.state.station1} station2={this.state.station2} show={this.state.show}
+                                   quantity={this.state.quantity} date={this.state.date} id={this.state.id}
+                                   price={this.state.price}/>
             </div>
 
         );
