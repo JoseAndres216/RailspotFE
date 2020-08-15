@@ -237,7 +237,9 @@ class TicketSelection extends Component {
                                                                     }
                                                                 })
                                                                 .catch((error) => {
-                                                                    alert('No fue posible reservar el tiquete');
+                                                                    alert('No fue posible reservar el tiquete ya que ' +
+                                                                        'no existe una ruta disponible entre las ' +
+                                                                        'estaciones seleccionadas');
                                                                 });
                                                         } catch (error) {
                                                             alert("La tearea falló con éxito: " + error);

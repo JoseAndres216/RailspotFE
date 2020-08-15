@@ -15,9 +15,22 @@ Class for the ticket bill subcomponent
 class TicketBill extends Component{
     constructor(props) {
         super(props);
+        this.calcDiscount()
         this.state = {
-            discount: ((this.props.price * this.props.quantity) *(0.02*this.props.quantity))
+            discount: 0.0
         };
+    }
+
+    calcDiscount(){
+        if(this.props.quantity > 1 && this.props.quantity <= 46){
+            this.setState({
+                discount: ((this.props.price * this.props.quantity) * (0.02*this.props.quantity))
+            })
+        } else if(this.props.quantity > 46){
+            this.setState({
+                discount: ((this.props.price * this.props.quantity) * (0.02*46))
+            })
+        }
     }
 
     /*
@@ -55,10 +68,10 @@ class TicketBill extends Component{
                                 + this.props.price}
                                 <br />
                                 {'Descuento aplicado: ................................................................ c'
-                                + ((this.props.price * this.props.quantity) *(0.02*this.props.quantity))}
+                                + this.state.discount}
                                 <br />
                                 {'Costo total: .............................................................................. c'
-                                + ((this.props.price * this.props.quantity) - ((this.props.price * this.props.quantity) *(0.02*this.props.quantity)))}
+                                + ((this.props.price * this.props.quantity) - this.state.discount)}
                                 <br /><br />
                                 {'Gracias por preferirnos!'}
                                 <br /><br />
