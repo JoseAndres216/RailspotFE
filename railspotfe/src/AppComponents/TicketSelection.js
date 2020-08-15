@@ -15,10 +15,12 @@ import ConfirmationNumberIcon from '@material-ui/icons/ConfirmationNumber';
 /*
 Class for the ticket selection subcomponent
  */
-class TicketSelection extends Component{
+class TicketSelection extends Component {
     constructor(props) {
         super(props);
+        this.loadStations()
         this.state = {
+            stations: [],
             id: '[id]',
             station1: '[estacion 1]',
             station2: '[estacion 2]',
@@ -34,10 +36,11 @@ class TicketSelection extends Component{
     Methods for refreshing dynamically the class states
     */
     station1Changed = (event) => {
+
         this.setState({
             station1: event.target.value
         })
-        if(this.state.station1 === this.state.station2){
+        if (this.state.station1 === this.state.station2) {
             this.setState({
                 show: false
             })
@@ -49,7 +52,7 @@ class TicketSelection extends Component{
         this.setState({
             station2: event.target.value
         })
-        if(this.state.station1 === this.state.station2){
+        if (this.state.station1 === this.state.station2) {
             this.setState({
                 show: false
             })
@@ -83,7 +86,7 @@ class TicketSelection extends Component{
         this.setState({
             tvdCertification: !this.state.tvdCertification,
         })
-        if(this.state.tvdCertification){
+        if (this.state.tvdCertification) {
             this.setState({
                 date: 'Fecha con certificación TVD'
             })
@@ -91,11 +94,37 @@ class TicketSelection extends Component{
         console.log('El valor de tvd es: ' + this.state.tvdCertification)
     };
 
+    loadStations = () => {
+        try {
+            var httpResult = axios({
+                method: "GET",
+                url: 'http://localhost:8080/railspot-1.0/routes/all',
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json",
+                },
+            });
+            httpResult
+                .then((response) => {
+                    console.log(response.data);
+                    this.setState({
+                        stations: response.data,
+                    });
+                    console.log('Error a lo hora de cargar las estaciones');
+                })
+                .catch((error) => {
+                    console.log('Error a lo hora de cargar las estaciones');
+                });
+        } catch (error) {
+            console.log("La tearea falló con éxito: " + error);
+        }
+    }
+
     /*
     Method for "drawing" all the class components
     */
     render() {
-        return(
+        return (
             <div>
                 <Divider variant={'middle'}/>
                 <Divider variant={'middle'}/>
@@ -111,16 +140,16 @@ class TicketSelection extends Component{
                     variant="outlined"
                     onChange={this.idChanged}
                 />
-                <br /><br />
+                <br/><br/>
                 <div>
                     <Select
                         onChange={this.station1Changed}
                         value={this.state.station1}>
 
                         <MenuItem value={'[estacion 1]'}><em>Seleccione una estacion</em></MenuItem>
-                        <MenuItem value={'Estacion ejemplo 1'}>Estacion ejemplo 1</MenuItem>
-                        <MenuItem value={'Estacion ejemplo 2'}>Estacion ejemplo 2</MenuItem>
-                        <MenuItem value={'Estacion ejemplo 3'}>Estacion ejemplo 3</MenuItem>
+                        {this.state.stations.map(element => (
+                            <MenuItem value={element}>{element}</MenuItem>
+                        ))}
                     </Select>
 
                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -130,9 +159,9 @@ class TicketSelection extends Component{
                         value={this.state.station2}>
 
                         <MenuItem value={'[estacion 2]'}><em>Seleccione una estacion</em></MenuItem>
-                        <MenuItem value={'Estacion ejemplo 1'}>Estacion ejemplo 1</MenuItem>
-                        <MenuItem value={'Estacion ejemplo 2'}>Estacion ejemplo 2</MenuItem>
-                        <MenuItem value={'Estacion ejemplo 3'}>Estacion ejemplo 3</MenuItem>
+                        {this.state.stations.map(element => (
+                            <MenuItem value={element}>{element}</MenuItem>
+                        ))}
                     </Select>
                 </div>
                 <br/>
@@ -172,10 +201,10 @@ class TicketSelection extends Component{
                         variant="contained"
                         endIcon={<ConfirmationNumberIcon/>}
                         onClick={() => {
-                            if(this.state.station1 !== this.state.station2) {
+                            if (this.state.station1 !== this.state.station2) {
                                 if (this.state.id !== '[id]') {
                                     if (this.state.station1 !== '[estacion 1]') {
-                                        if (this.state.station2 !== '[estacion 2]'){
+                                        if (this.state.station2 !== '[estacion 2]') {
                                             if (this.state.date !== '[Date]' || this.state.tvdCertification) {
                                                 try {
                                                     if (this.state.quantity > 0) {
@@ -205,7 +234,7 @@ class TicketSelection extends Component{
                                                                         price: response.data,
                                                                     });
                                                                     console.log('Tiquete reservado, por favor confirme' +
-                                                                                'su compra');
+                                                                        'su compra');
                                                                 })
                                                                 .catch((error) => {
                                                                     console.log('No fue posible reservar el tiquete');
@@ -242,9 +271,9 @@ class TicketSelection extends Component{
                 <br/>
                 <Divider variant={'middle'}/>
                 <Divider variant={'middle'}/>
-                <TicketInformation station1 = {this.state.station1} station2 = {this.state.station2} show = {this.state.show}
-                                   quantity = {this.state.quantity} date = {this.state.date} id = {this.state.id}
-                                   price = {this.state.price}/>
+                <TicketInformation station1={this.state.station1} station2={this.state.station2} show={this.state.show}
+                                   quantity={this.state.quantity} date={this.state.date} id={this.state.id}
+                                   price={this.state.price}/>
             </div>
 
         );
