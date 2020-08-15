@@ -15,9 +15,7 @@ class StationsEdition extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            name: '[Station name]',
-            x: 0,
-            y: 0
+            name: '[Station name]'
         };
     }
 
@@ -28,21 +26,18 @@ class StationsEdition extends Component {
         this.setState({
             name: event.target.value
         })
-        console.log(this.state.name)
     };
 
     xChanged = (event) => {
         this.setState({
             x: event.target.value
         })
-        console.log(this.state.x)
     };
 
     yChanged = (event) => {
         this.setState({
             y: event.target.value
         })
-        console.log(this.state.y)
     };
 
     /*
@@ -64,24 +59,6 @@ class StationsEdition extends Component {
                             variant="outlined"
                             label='Nombre de la estación'
                             onChange={this.nameChanged}/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <TextField
-                            color={'primary'}
-                            required={true}
-                            placeholder={"Posición en x"}
-                            id="txtStation"
-                            variant="outlined"
-                            label='Posicion en x'
-                            onChange={this.xChanged}/>
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        <TextField
-                            color={'primary'}
-                            required={true}
-                            placeholder={"Posición en y"}
-                            id="txtStation"
-                            variant="outlined"
-                            label='Posicion en y'
-                            onChange={this.yChanged}/>
                     </div>
                     <br/>
                     <div>
@@ -92,32 +69,23 @@ class StationsEdition extends Component {
                             onClick={() => {
                                 if (this.state.name !== '[Station name]' && this.state.name !== '') {
                                     try {
-                                        if (this.state.x >= 0 && this.state.y >= 0) {
-                                            try {
-                                                var httpResult = axios({
-                                                    method: "PUT",
-                                                    url: 'http://localhost:8080/railspot-1.0/admin/station?value=' +
-                                                        this.state.name
-                                                });
-                                                httpResult
-                                                    .then((response) => {
-                                                        console.log(response.status)
-                                                        alert('Estación agregada con éxito!')
-                                                    })
-                                                    .catch(() => {
-                                                        alert("No fue posible agregar la estación")
-                                                    });
-                                            } catch (error) {
-                                                console.log("La tearea falló con éxito: " + error)
-                                            }
-                                        } else {
-                                            alert('Digite unas coordenadas válidas')
-                                        }
-                                    } catch {
-                                        alert('Digite unas coordenadas válidas')
+                                        var httpResult = axios({
+                                            method: "PUT",
+                                            url: 'http://localhost:8080/railspot-1.0/admin/station?value=' +
+                                                this.state.name
+                                        });
+                                        httpResult
+                                            .then((response) => {
+                                                alert('Estación agregada con éxito!')
+                                            })
+                                            .catch(() => {
+                                                alert("No fue posible agregar la estación")
+                                            });
+                                    } catch (error) {
+                                        alert("La tarea falló con éxito: " + error)
                                     }
                                 } else {
-                                    alert('Digite una estacion válida')
+                                    alert('Digite una estación válida')
                                 }
                             }}>
                             Agregar estación
@@ -137,18 +105,16 @@ class StationsEdition extends Component {
                                         });
                                         httpResult
                                             .then((response) => {
-
-                                                console.log(response.status)
                                                 alert('Estación eliminada con éxito!')
                                             })
                                             .catch(() => {
                                                 alert("No fue posible eliminar la estación ya uqe posee tiquetes activos")
                                             });
                                     } catch (error) {
-                                        console.log("La tearea falló con éxito: " + error)
+                                        alert("La tarea falló con éxito: " + error)
                                     }
                                 } else {
-                                    alert('Digite una estacion válida')
+                                    alert('Digite una estación válida')
                                 }
                             }}>
                             Eliminar estación

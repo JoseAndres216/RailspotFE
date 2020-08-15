@@ -45,7 +45,6 @@ class TicketSelection extends Component {
                 show: false
             })
         }
-        console.log('El valor de station1 es: ' + this.state.station1)
     };
 
     station2Changed = (event) => {
@@ -57,7 +56,6 @@ class TicketSelection extends Component {
                 show: false
             })
         }
-        console.log('El valor de station2 es: ' + this.state.station2)
     };
 
     dateChanged = (event) => {
@@ -65,21 +63,18 @@ class TicketSelection extends Component {
             date: event.target.value,
             tvdCertification: false
         })
-        console.log('El valor de date es: ' + this.state.date)
     };
 
     quantityChanged = (event) => {
         this.setState({
             quantity: event.target.value
         })
-        console.log('Cantidad de tiquetes: ' + this.state.quantity)
     }
 
     idChanged = (event) => {
         this.setState({
             id: event.target.value
         })
-        console.log('Cantidad de tiquetes: ' + this.state.id)
     }
 
     tvdCertifChanged = () => {
@@ -91,7 +86,6 @@ class TicketSelection extends Component {
                 date: 'Fecha con certificación TVD'
             })
         }
-        console.log('El valor de tvd es: ' + this.state.tvdCertification)
     };
 
     loadStations = () => {
@@ -106,17 +100,16 @@ class TicketSelection extends Component {
             });
             httpResult
                 .then((response) => {
-                    console.log(response);
                     this.setState({
                         stations: response.data,
                     });
-                    console.log('Error a lo hora de cargar las estaciones');
+                    alert('Error a lo hora de cargar las estaciones');
                 })
                 .catch((error) => {
-                    console.log('Error a lo hora de cargar las estaciones');
+                    alert('Error a lo hora de cargar las estaciones');
                 });
         } catch (error) {
-            console.log("La tearea falló con éxito: " + error);
+            alert("La tarea falló con éxito: " + error);
         }
     }
 
@@ -226,12 +219,9 @@ class TicketSelection extends Component {
                                                             });
                                                             httpResult
                                                                 .then((response) => {
-                                                                    console.log(response);
                                                                     this.setState({
                                                                         price: response.data,
                                                                     });
-                                                                    alert('Tiquete reservado, por favor confirme' +
-                                                                        'su compra');
                                                                     if (this.state.show === false) {
                                                                         this.setState({show: !this.state.show})
                                                                     }
@@ -242,7 +232,7 @@ class TicketSelection extends Component {
                                                                         'estaciones seleccionadas');
                                                                 });
                                                         } catch (error) {
-                                                            alert("La tearea falló con éxito: " + error);
+                                                            alert("La tarea falló con éxito: " + error);
                                                         }
                                                     } else {
                                                         alert('Digite una cantidad de tiquetes válida')
@@ -269,7 +259,6 @@ class TicketSelection extends Component {
                         Seleccionar tiquete
                     </Button>
                 </div>
-
                 <br/>
                 <Divider variant={'middle'}/>
                 <Divider variant={'middle'}/>

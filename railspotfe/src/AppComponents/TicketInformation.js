@@ -38,10 +38,6 @@ class TicketInformation extends Component{
                                 <Typography align='center' variant='h6' color="textSecondary">
                                     {'Su viaje iniciará en ' + this.props.station1 + ' y terminará en ' + this.props.station2}
                                     <br />
-                                    {'Su viaje pasará por las siguientes estaciones:'}
-                                    <br />
-                                    {'- '}
-                                    <br />
                                     {'Se comprarán ' + this.props.quantity + ' tiquetes para el viaje, reservados para el día: ' + this.props.date}
                                     <br />
                                     {'Y cada uno tendrá un costo de ' + this.props.price + ' colones' }
@@ -63,8 +59,6 @@ class TicketInformation extends Component{
                                     });
                                     httpResult
                                         .then((response) => {
-                                            console.log(response.status)
-                                            alert('Tiquete comprado!')
                                             if(this.state.show === false){
                                                 this.setState({show: !this.state.show})
                                             }
@@ -73,7 +67,7 @@ class TicketInformation extends Component{
                                             alert("No fue posible comprar el tiquete")
                                         });
                                 } catch (error) {
-                                    alert("La tearea falló con éxito: " + error)
+                                    alert("La tarea falló con éxito: " + error)
                                 }
                             }}>
                             Realizar Compra

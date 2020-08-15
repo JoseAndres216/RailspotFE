@@ -39,28 +39,24 @@ class ConsultTickets extends Component {
         this.setState({
             option: event.target.value
         })
-        console.log('El valor de station es: ' + this.state.option)
     };
 
     stationChanged = (event) => {
         this.setState({
             station: event.target.value
         })
-        console.log('El valor de station es: ' + this.state.station)
     };
 
     idChanged = (event) => {
         this.setState({
             id: event.target.value
         })
-        console.log('El valor de station es: ' + this.state.id)
     };
 
     dateChanged = (event) => {
         this.setState({
             date: event.target.value
         })
-        console.log('El valor de station es: ' + this.state.date)
     };
 
     loadStations = () => {
@@ -75,7 +71,6 @@ class ConsultTickets extends Component {
             });
             httpResult
                 .then((response) => {
-                    console.log(response);
                     this.setState({
                         stations: response.data,
                     });
@@ -84,7 +79,7 @@ class ConsultTickets extends Component {
                     alert('Error a lo hora de cargar las estaciones');
                 });
         } catch (error) {
-            alert("La tearea falló con éxito: " + error);
+            alert("La tarea falló con éxito: " + error);
         }
     }
 
@@ -103,17 +98,15 @@ class ConsultTickets extends Component {
             });
             httpResult
                 .then((response) => {
-                    console.log(response);
                     this.setState({
                         tickets: response.data,
                     });
-                    alert('Los tiquetes fueron cargados exitosamente');
                 })
                 .catch(() => {
                     alert('Error a lo hora de cargar los tiquetes');
                 });
         } catch (error) {
-            alert("La tearea falló con éxito: " + error);
+            alert("La tarea falló con éxito: " + error);
         }
     }
 
@@ -132,17 +125,15 @@ class ConsultTickets extends Component {
             });
             httpResult
                 .then((response) => {
-                    console.log(response);
                     this.setState({
                         tickets: response.data,
                     });
-                    alert('Los tiquetes fueron cargados exitosamente');
                 })
                 .catch(() => {
                     alert('Error a lo hora de cargar los tiquetes');
                 });
         } catch (error) {
-            alert("La tearea falló con éxito: " + error);
+            alert("La tarea falló con éxito: " + error);
         }
     }
 
@@ -161,17 +152,15 @@ class ConsultTickets extends Component {
             });
             httpResult
                 .then((response) => {
-                    console.log(response);
                     this.setState({
                         tickets: response.data,
                     });
-                    alert('Los tiquetes fueron cargados exitosamente');
                 })
                 .catch(() => {
                     alert('Error a lo hora de cargar los tiquetes');
                 });
         } catch (error) {
-            alert("La tearea falló con éxito: " + error);
+            alert("La tarea falló con éxito: " + error);
         }
     }
 
@@ -249,7 +238,7 @@ class ConsultTickets extends Component {
                                                     if (this.state.station !== '[estacion]') {
                                                         this.loadresultsSTATION()
                                                     } else {
-                                                        alert('Digite una estacion válida')
+                                                        alert('Digite una estación válida')
                                                     }
                                                 }
                                             }

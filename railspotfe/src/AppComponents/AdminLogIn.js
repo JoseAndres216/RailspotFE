@@ -30,14 +30,12 @@ class AdminLogIn extends Component {
         this.setState({
             user: event.target.value
         })
-        console.log(this.state.user)
     };
 
     passwordChanged = (event) => {
         this.setState({
             password: event.target.value
         })
-        console.log(this.state.password)
     };
 
     /*
@@ -89,7 +87,6 @@ class AdminLogIn extends Component {
                                     });
                                     httpResult
                                         .then((response) => {
-                                            console.log(response.status)
                                             if ((this.state.showing === false) && (response.status === 202)) {
                                                 this.setState({showing: !this.state.showing})
                                             }
@@ -98,8 +95,6 @@ class AdminLogIn extends Component {
                                             alert("Credenciales inválidas")
                                         });
                                 } catch (error) {
-                                    console.log("me mamé doblemente lol")
-                                    console.log(error);
                                 }
 
                             } else {

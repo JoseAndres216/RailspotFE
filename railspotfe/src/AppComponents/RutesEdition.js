@@ -32,21 +32,18 @@ class RutesEdition extends Component {
         this.setState({
             station1: event.target.value
         })
-        console.log('El valor de station1 es: ' + this.state.station1)
     };
 
     station2Changed = (event) => {
         this.setState({
             station2: event.target.value
         })
-        console.log('El valor de station2 es: ' + this.state.station2)
     };
 
     distanceChanged = (event) => {
         this.setState({
             distance: event.target.value
         })
-        console.log('El valor de station2 es: ' + this.state.distance)
     };
 
     loadStations = () => {
@@ -61,17 +58,16 @@ class RutesEdition extends Component {
             });
             httpResult
                 .then((response) => {
-                    console.log(response);
                     this.setState({
                         stations: response.data,
                     });
-                    console.log('Error a lo hora de cargar las estaciones');
+                    alert('Error a lo hora de cargar las estaciones');
                 })
                 .catch((error) => {
-                    console.log('Error a lo hora de cargar las estaciones');
+                    alert('Error a lo hora de cargar las estaciones');
                 });
         } catch (error) {
-            console.log("La tearea falló con éxito: " + error);
+            alert("La tarea falló con éxito: " + error);
         }
     }
 
@@ -139,15 +135,13 @@ class RutesEdition extends Component {
                                                     });
                                                     httpResult
                                                         .then((response) => {
-                                                            console.log(response.status)
-                                                            alert('Ruta agregada con éxito!')
                                                             this.loadStations()
                                                         })
                                                         .catch(() => {
                                                             alert("No fue posible agregar la ruta")
                                                         });
                                                 } catch (error) {
-                                                    console.log("La tearea falló con éxito: " + error)
+                                                    alert("La tarea falló con éxito: " + error)
                                                 }
                                             } else {
                                                 alert('Digite un precio válido')
@@ -180,7 +174,6 @@ class RutesEdition extends Component {
                                             });
                                             httpResult
                                                 .then((response) => {
-                                                    console.log(response.status)
                                                     if (response.status !== 202) {
                                                         alert(response.data)
                                                     } else {
@@ -192,7 +185,7 @@ class RutesEdition extends Component {
                                                     alert("No fue posible eliminar la ruta")
                                                 });
                                         } catch (error) {
-                                            alert("La tearea falló con éxito: " + error)
+                                            alert("La tarea falló con éxito: " + error)
                                         }
                                     } else {
                                         alert('Digite dos estaciones diferentes')

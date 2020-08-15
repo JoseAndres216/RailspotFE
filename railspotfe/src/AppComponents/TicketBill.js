@@ -18,7 +18,8 @@ class TicketBill extends Component {
         super(props);
         this.calcDiscount()
         this.state = {
-            discount: 0.0
+            discount: 0.0,
+            number: Math.floor(Math.random() * (1000000 - 1 + 1) + 1)
         };
     }
 
@@ -35,7 +36,6 @@ class TicketBill extends Component {
             });
             httpResult
                 .then((response) => {
-                    console.log(response);
                     this.setState({
                         discount: response.data,
                     });
@@ -44,7 +44,7 @@ class TicketBill extends Component {
                     alert('Error a lo hora de calcular el descuento');
                 });
         } catch (error) {
-            alert("La tearea falló con éxito: " + error);
+            alert("La tarea falló con éxito: " + error);
         }
     }
 
@@ -63,7 +63,7 @@ class TicketBill extends Component {
                             <Typography align='center' variant='h6' color="textSecondary">
                                 {'Railspot Costa Rica'}
                                 <br/>
-                                {'Factura N° ' + Math.floor(Math.random() * (1000000 - 1 + 1) + 1)}
+                                {'Factura N° ' + this.state.number}
                                 <br/>
                                 {'Fecha: ' + new Date().getDate() + '/' + new Date().getMonth() + '/' + new Date().getFullYear()}
                                 <br/>
@@ -82,10 +82,13 @@ class TicketBill extends Component {
                                 {'Costo por tiquete: .................................................................... c'
                                 + this.props.price}
                                 <br/>
+                                {'Costo total: .................................................................... c'
+                                + this.props.price * this.props.quantity}
+                                <br/>
                                 {'Descuento aplicado: ................................................................ c'
                                 + this.state.discount}
                                 <br /> {this.calcDiscount()}
-                                {'Costo total: .............................................................................. c'
+                                {'Costo final: .............................................................................. c'
                                 + ((this.props.price * this.props.quantity) - this.state.discount)}
                                 <br /><br />
                                 {'Gracias por preferirnos!'}
