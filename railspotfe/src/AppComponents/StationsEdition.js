@@ -142,7 +142,7 @@ class StationsEdition extends Component {
                                                 alert('Estación eliminada con éxito.')
                                             })
                                             .catch(() => {
-                                                alert("No fue posible eliminar la estación, tiene tiquetes activos.")
+                                                alert("No fue posible eliminar la estación ya uqe posee tiquetes activos.")
                                             });
                                     } catch (error) {
                                         console.log("La tearea falló con éxito: " + error)
